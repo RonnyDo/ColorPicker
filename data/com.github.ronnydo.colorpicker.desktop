@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Color Picker
+Comment=The one and only Color Picker to speed professionals workflow.
+Categories=Utility;
+Exec=com.github.ronnydo.colorpicker
+Icon=application-default-icon
+Terminal=false
+Type=Application
+
+Keywords=Color;Picker;
