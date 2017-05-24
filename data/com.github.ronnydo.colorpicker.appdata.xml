@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2017 Ronny Dobra <ronnydobra at arcor dot de> -->
+<component type="desktop">
+  <id>com.github.ronnydo.colorpicker.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0+</project_license>
+  <name>Color Picker</name>
+  <summary>The one and only Color Picker to speed up professionals workflow.</summary>
+  <description>
+    <p>An easy to use color picker without fancy switches and dialogs.</p>
+     <p>Features include:</p>
+     <ul>
+       <li>Color code output in multiple formats</li>
+       <li>Magnifying glass</li>
+       <li>Color history</li>
+    </ul>
+  </description>
+  <custom>
+     <value key="x-appcenter-color-primary">#603461</value>
+     <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
+  </custom>
+</component>
