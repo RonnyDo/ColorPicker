@@ -20,27 +20,55 @@
 */
 
 namespace ColorPicker {
-    int main (string[] args) {
-        Gtk.init (ref args);
+    
+    public class ScreenshotApp : Granite.Application {
+        public static int main (string[] args) {
+            Gtk.init (ref args);
 
-        var window = new Gtk.Window ();
-        window.title = "Hello World!";
-        window.set_border_width (12);
-        window.set_position (Gtk.WindowPosition.CENTER);
-        window.set_default_size (350, 70);
-        window.destroy.connect (Gtk.main_quit);
+            var window = new Gtk.Window ();
+            window.title = "Hello World!";
+            window.set_border_width (12);
+            window.set_position (Gtk.WindowPosition.CENTER);
+            window.set_default_size (350, 70);
+            window.destroy.connect (Gtk.main_quit);
 
-        var button_hello = new Gtk.Button.with_label ("Click me!");
-        button_hello.clicked.connect (() => {
-            button_hello.label = "Hello World!";
-            button_hello.set_sensitive (false);
-        });
+            var button_hello = new Gtk.Button.with_label ("Click me!");
+            button_hello.clicked.connect (() => {
+                var mouse_position = new ColorPicker.Widgets.MousePosition ();
+                mouse_position.show_all ();
+                
+                mouse_position.moved.connect ((t, color) => {
+                    button_hello.label = color.to_string ();
+                    //stdout.printf((string) mouse_position.get_point().x + "\n");
+                    //button_hello.label = (string) mouse_position.get_point().x; 
+                });                
 
-        window.add (button_hello);
-        window.show_all ();
+                mouse_position.cancelled.connect (() => {
+                    mouse_position.close ();
+                    window.present ();
+                });
+
+                var win = mouse_position.get_window ();
+                
+                mouse_position.picked.connect ((t, color) => {
+                
+                    mouse_position.close ();
+                    window.present ();
+                    /*
+                    stdout.printf("picked\n");
+                    Gdk.Point p = mouse_position.get_point();
+                    button_hello.label = (string) mouse_position.get_point().x; 
+                    mouse_position.close ();*/
+                });
+            });
+
+            window.add (button_hello);
+            window.show_all ();
 
 
-        Gtk.main ();
-        return 0;   
+            Gtk.main ();
+            return 0;   
+        }
+
     }
 }
