@@ -51,8 +51,7 @@ namespace ColorPicker {
                 });
             });
             
-            Gtk.Box content = get_content_area () as Gtk.Box;
-            content.add (button_hello);
+            this.add (button_hello);
         }
     }
     
