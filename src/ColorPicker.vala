@@ -21,16 +21,52 @@
 
 namespace ColorPicker {
     
-    public class ScreenshotApp : Granite.Application {
+    public class ColorPickerApp : Granite.Application {
+    
+        private static ColorPickerApp app;
+        private ColorPickerWindow window = null;
+        
+        
+        construct {
+            var quit_action = new SimpleAction ("quit", null);
+            quit_action.activate.connect (() => {
+             if (window != null) {
+                 window.destroy ();
+             }
+            });
+
+            add_action (quit_action);
+            add_accelerator ("<Control>q", "app.quit", null);
+        }
+        
+        public static ColorPickerApp get_instance () {
+            if (app == null) {
+             app = new ColorPickerApp ();
+            }
+
+            return app;
+        }
+        
+        protected override void activate () {
+            window = new ColorPickerWindow();
+            window.set_application (this);
+            window.show_all ();
+        }
+        
         public static int main (string[] args) {
             Gtk.init (ref args);
+            
+            app = new ColorPickerApp ();
+            
+            app.run(args);
 
+/*
             var window = new Gtk.Window ();
-            window.title = "Hello World!";
-            window.set_border_width (12);
-            window.set_position (Gtk.WindowPosition.CENTER);
+            window.title = "Hello World!";-
+            //window.set_border_width (12);
+            //window.set_position (Gtk.WindowPosition.CENTER);
             window.set_default_size (350, 70);
-            window.destroy.connect (Gtk.main_quit);
+            //window.destroy.connect (Gtk.main_quit);
 
             var button_hello = new Gtk.Button.with_label ("Click me!");
             button_hello.clicked.connect (() => {
@@ -39,8 +75,6 @@ namespace ColorPicker {
                 
                 mouse_position.moved.connect ((t, color) => {
                     button_hello.label = color.to_string ();
-                    //stdout.printf((string) mouse_position.get_point().x + "\n");
-                    //button_hello.label = (string) mouse_position.get_point().x; 
                 });                
 
                 mouse_position.cancelled.connect (() => {
@@ -53,18 +87,13 @@ namespace ColorPicker {
                 mouse_position.picked.connect ((t, color) => {
                 
                     mouse_position.close ();
-                    window.present ();
-                    /*
-                    stdout.printf("picked\n");
-                    Gdk.Point p = mouse_position.get_point();
-                    button_hello.label = (string) mouse_position.get_point().x; 
-                    mouse_position.close ();*/
+                    window.present ();                    
                 });
             });
 
             window.add (button_hello);
             window.show_all ();
-
+*/
 
             Gtk.main ();
             return 0;   
