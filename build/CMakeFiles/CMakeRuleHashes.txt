@@ -1,0 +1,3 @@
+# Hashes of file build rules.
+e8cc98d88f532f91392e4b335e4dde83 com.github.ronnydo.colorpicker_valac.stamp
+bc19677b8c03de4b1e5f4f3d5b8b2b87 src/ColorPicker.c

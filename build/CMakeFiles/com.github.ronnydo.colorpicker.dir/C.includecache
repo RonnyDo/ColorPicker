@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ronny/Vorlagen/Color_Picker/build/src/ColorPicker.c
+glib.h
+-
+glib-object.h
+-
+stdlib.h
+-
+string.h
+-
+gtk/gtk.h
+-
+
+/home/ronny/Vorlagen/Color_Picker/build/src/ColorPickerWindow.c
+glib.h
+-
+glib-object.h
+-
+

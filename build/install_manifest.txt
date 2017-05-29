@@ -1,0 +1,3 @@
+/usr/bin/com.github.ronnydo.colorpicker
+/usr/share/applications/com.github.ronnydo.colorpicker.desktop
+/usr/share/metainfo/com.github.ronnydo.colorpicker.appdata.xml

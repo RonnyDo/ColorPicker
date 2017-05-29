@@ -1,0 +1,36 @@
+namespace ColorPicker {
+    
+    public class ColorArea: Gtk.DrawingArea {
+        
+        private Gdk.RGBA color;
+        
+        public ColorArea () {
+            set_size_request (100, 100);
+            color.parse("#FFFFFF");
+        }
+
+        /* Widget is asked to draw itself */
+        public override bool draw (Cairo.Context ctx) {
+            // Get necessary data:
+            weak Gtk.StyleContext style_context = get_style_context ();
+            int width = get_allocated_width ();
+            int height = get_allocated_height ();
+
+            // Draw an arc:
+            double xc = width / 2.0;
+            double yc = height / 2.0;
+            double radius = int.min (width, height) / 2.0;
+            double angle1 = 0;
+            double angle2 = 2*Math.PI;
+
+            ctx.arc (xc, yc, radius, angle1, angle2);
+            Gdk.cairo_set_source_rgba (ctx, this.color);
+            ctx.fill ();
+            return true;
+        }
+        
+        public void set_color (Gdk.RGBA color) {
+           this.color = color;
+        }
+    }    
+}

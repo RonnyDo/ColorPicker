@@ -39,7 +39,8 @@
     # files we want to compile
     include(ValaPrecompile)
     vala_precompile(VALA_C ${EXEC_NAME}
-        src/hello-again.vala
+        src/ColorPicker.vala
+        src/ColorPickerWindow.vala
 
     # tell what libraries to use when compiling
     PACKAGES
