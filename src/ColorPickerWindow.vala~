@@ -24,17 +24,45 @@ namespace ColorPicker {
     public class ColorPickerWindow: Gtk.Window {
     
         public ColorPickerWindow () {
-            Object (title: "Whazzup") ;     
+            Object (title: "Color Picker",
+                    border_width: 12);     
         }
         
         construct {
-            var button_hello = new Gtk.Button.with_label ("Click me!");
+            this.set_default_size (300, 420);
+            
+            var color_area = new ColorArea ();        
+            color_area.margin_bottom = 12;
+                         
+            var hex_entry = new Gtk.Entry ();
+            hex_entry.placeholder_text = "rgb(255,255,255)";
+            hex_entry.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-copy");
+                   
+            var button_hello = new Gtk.Button.with_label ("Pick Color");
+            button_hello.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+            button_hello.can_default = true;
+            
+            Gtk.Box box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+    		box.pack_start (color_area);
+    		box.pack_start (hex_entry);
+    		box.pack_start (button_hello);
+    		this.add (box);
+    		
+    		
+    		hex_entry.icon_press.connect ((pos, event) => {
+                if (pos == Gtk.EntryIconPosition.SECONDARY) {
+                    Gtk.Clipboard.get_default (this.get_display ()).set_text (hex_entry.get_text (), -1);
+                }
+            });
+    		            
             button_hello.clicked.connect (() => {
                 var mouse_position = new ColorPicker.Widgets.MousePosition ();
                 mouse_position.show_all ();
                 
                 mouse_position.moved.connect ((t, color) => {
-                    button_hello.label = color.to_string ();
+                    color_area.set_color (color);
+                    color_area.queue_draw ();
+                    hex_entry.text = color.to_string ();
                 });                
 
                 mouse_position.cancelled.connect (() => {
@@ -45,14 +73,16 @@ namespace ColorPicker {
                 var win = mouse_position.get_window ();
                 
                 mouse_position.picked.connect ((t, color) => {
-                
+                    color_area.set_color (color);
+                    color_area.queue_draw ();
+                    hex_entry.text = color.to_string ();
                     mouse_position.close ();
                     this.present ();                    
                 });
             });
             
-            this.add (button_hello);
-        }
+        }    
+        
     }
     
     
