@@ -26,7 +26,7 @@ namespace ColorPicker {
         private Gdk.RGBA color;
         
         public ColorArea () {
-            set_size_request (100, 100);
+            set_size_request (140, 140);
             
             color.parse("#EEEEEE");            
         }
