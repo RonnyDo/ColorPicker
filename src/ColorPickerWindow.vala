@@ -36,14 +36,16 @@ namespace ColorPicker {
         
         construct {
             // main box            
-            var color_area = new ColorArea ();    
+            var color_area = new ColorArea (); 
             
-            var hex_label = new Gtk.Label (null);
+            var hex_label = new Gtk.Label ("#FFFFFF");
             hex_label.halign = Gtk.Align.END;       
             hex_label.valign = Gtk.Align.END;
             hex_label.set_selectable (true);
             hex_label.set_use_markup (true);
-            hex_label.set_markup (Markup.printf_escaped (("<b>%s</b>"), "#FFFFFF"));
+            //hex_label.set_markup (Markup.printf_escaped (("<b>%s</b>"), "#FFFFFF"));
+            
+            hex_label.get_style_context ().add_class ("h1");
             
             
             var pick_color_button = new Gtk.Button.with_label ("Pick Color");
@@ -59,7 +61,9 @@ namespace ColorPicker {
             
             var main_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             main_box.margin_bottom = 12;
-            main_box.pack_start (color_area);
+            //main_box.margin_left = 12;       
+            //main_box.margin_right = 12;
+            main_box.pack_start (color_area, false, false);
             main_box.pack_start (main_right_box);
             
             // format box
@@ -109,7 +113,7 @@ namespace ColorPicker {
             // tie together
             var skeleton_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             skeleton_box.orientation = Gtk.Orientation.VERTICAL;
-            skeleton_box.margin = 6;    
+            skeleton_box.margin = 12;    
             skeleton_box.margin_bottom = 0;        
             skeleton_box.pack_start (main_box);            
             skeleton_box.pack_start (format_box);
@@ -131,7 +135,7 @@ namespace ColorPicker {
                     var ext_color = (ExtRGBA) color;
                     color_area.set_color (ext_color);
                     color_area.queue_draw ();
-                    hex_label.set_markup (Markup.printf_escaped ("<b>%s</b>", ext_color.to_uppercase_hex_string ()));
+                    hex_label.set_markup (ext_color.to_uppercase_hex_string ());
                 });                
 
                 mouse_position.cancelled.connect (() => {
