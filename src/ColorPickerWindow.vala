@@ -30,7 +30,7 @@ namespace ColorPicker {
                     resizable: false,
                     //height_request: 500,
                     width_request: 500
-                    );     
+                    );  
         }       
         
         
@@ -166,7 +166,9 @@ namespace ColorPicker {
                     this.present ();                    
                 });
             });
-            
+          
+            // trigger pciker on startup
+            pick_color_button.clicked ();
         }    
         
     }
