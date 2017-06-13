@@ -5,16 +5,26 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <name>Color Picker</name>
-  <summary>The one and only Color Picker to speed up professionals workflow.</summary>
+  <summary>The most intuitive Color Picker to speed up your workflow.</summary>
   <description>
-    <p>An easy to use color picker without fancy switches and dialogs.</p>
-     <p>Features include:</p>
+    <p>One Color Picker to rule them all! No overhelming menus and settings. Just a dialog with all the features you'll need:</p>
      <ul>
-       <li>Color code output in multiple formats</li>
-       <li>Magnifying glass</li>
-       <li>Color history</li>
+       <li>Pick colors with the <b>Magnifying Glass</b></li>
+       <li>Choose between multiple <b>Color Formats</b></li>
+       <li>Let the <b>Color History</b> remember your last colors</li>
     </ul>
   </description>
+  <provides>
+	<binary>com.github.ronnydo.colorpicker</binary>
+  </provides>
+  <screenshots>
+	<screenshot type="default">
+	  <image>https://raw.githubusercontent.com/ronnydo/colorpicker/master/data/screenshot.png</image>
+	</screenshot>
+  </screenshots>
+  <developer_name>Ronny Dobra</developer_name>
+  <url type="homepage">https://github.com/RonnyDo/ColorPicker</url>
+  <url type="bugtracker">https://github.com/RonnyDo/ColorPicker/issues</url>
   <custom>
      <value key="x-appcenter-color-primary">#603461</value>
      <value key="x-appcenter-color-primary-text">rgb(255, 255, 255)</value>
