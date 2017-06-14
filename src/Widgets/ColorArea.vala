@@ -33,8 +33,6 @@ namespace ColorPicker {
 
         /* Widget is asked to draw itself */
         public override bool draw (Cairo.Context ctx) {
-            // Get necessary data:
-            weak Gtk.StyleContext style_context = get_style_context ();
             int width = get_allocated_width ();
             int height = get_allocated_height ();
 
@@ -51,9 +49,8 @@ namespace ColorPicker {
             string shadow_color = "#A9A9A9";
             for (int i = 1; i <= shadow_width; i++) {
                 ctx.arc (xc, yc, radius - i, angle1, angle2);
-                Gdk.RGBA c = new Gdk.RGBA();
-                c.parse(shadow_color);
-                //c.alpha = i* shadow_inc;      
+                Gdk.RGBA c = Gdk.RGBA();
+                c.parse(shadow_color);  
                 c.alpha = shadow_alpha / ((shadow_width - i + 1)*(shadow_width - i + 1));   
                 Gdk.cairo_set_source_rgba (ctx, c); 
                 ctx.stroke ();

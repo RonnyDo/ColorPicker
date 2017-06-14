@@ -65,8 +65,8 @@ namespace ColorPicker {
             
             var main_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             main_box.margin_bottom = 12;
-            //main_box.margin_left = 12;       
-            //main_box.margin_right = 12;
+            //main_box.margin_start = 12;       
+            //main_box.margin_end = 12;
             main_box.pack_start (color_area, false, false);
             main_box.pack_start (main_right_box);
             
@@ -79,7 +79,7 @@ namespace ColorPicker {
             format_entry.placeholder_text = ext_active_color.to_css_rgb_string ();
             format_entry.set_editable (false);
             format_entry.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-copy");     
-            format_entry.margin_right = 6;
+            format_entry.margin_end = 6;
             
             var color_format_combobox = new Gtk.ComboBoxText ();
             color_format_combobox.append_text ("HEX");
@@ -91,7 +91,7 @@ namespace ColorPicker {
             color_format_combobox.active = 2;
             
             var adjust_button = new Gtk.Button.from_icon_name ("media-eq-symbolic");
-            adjust_button.margin_left = 12;
+            adjust_button.margin_start = 12;
             // TODO implement change color dialog
             
             var format_hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);

@@ -7,8 +7,6 @@ namespace ColorPicker.Widgets {
         public signal void cancelled ();
         public signal void moved (Gdk.RGBA color);
 
-        private Gdk.Point point;
-
         construct {
             type = Gtk.WindowType.POPUP;
         }
@@ -17,7 +15,6 @@ namespace ColorPicker.Widgets {
             stick ();
             set_resizable (true);
             set_deletable (false);
-            set_has_resize_grip (false);
             set_skip_taskbar_hint (true);
             set_skip_pager_hint (true);
             set_keep_above (true);

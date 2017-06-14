@@ -9,10 +9,10 @@ namespace ColorPicker {
         
         const int border_width = 1;
         const string border_color_string = "rgba(50, 50, 50, 0.4)";
-        private Gdk.RGBA border_color = new Gdk.RGBA();
+        private Gdk.RGBA border_color = Gdk.RGBA();
         
         const string triangle_color_string = "#F5F5F5";
-        private Gdk.RGBA triangle_color = new Gdk.RGBA();
+        private Gdk.RGBA triangle_color = Gdk.RGBA();
         
         const int shadow_width = 16;    
         const string shadow_color_string = "#000000"; 
@@ -24,23 +24,15 @@ namespace ColorPicker {
         
         public ColorHistory () {
             set_size_request (100, 28);
-            
-            
-            
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK | Gdk.EventMask.ENTER_NOTIFY_MASK);
-            //this.add_events(Gdk.EventMask.ALL_EVENTS_MASK );
-          
             color_list = new Gee.ArrayList<Gdk.RGBA?> ();
-            
             border_color.parse (border_color_string); 
-            
-            triangle_color.parse (triangle_color_string);
-            
+            triangle_color.parse (triangle_color_string);            
         }
         
-        construct {
-            
-            get_window ().set_cursor (new Gdk.Cursor (Gdk.CursorType.HAND2));
+        construct {            
+            //get_window ().set_cursor (new Gdk.Cursor (Gdk.CursorType.HAND2));
+            get_window ().set_cursor (new Gdk.Cursor.for_display (Gdk.Display.get_default (), Gdk.CursorType.HAND2));
         }
         
         public void add_color (Gdk.RGBA color) {
@@ -62,9 +54,7 @@ namespace ColorPicker {
               
         /* Widget is asked to draw itself */
         public override bool draw (Cairo.Context ctx) {
-            
-            weak Gtk.StyleContext style_context = get_style_context ();
-           
+                       
         
             int width = get_allocated_width (); // better element_width / amount
             int height = get_allocated_height ();
@@ -86,7 +76,6 @@ namespace ColorPicker {
             
              
             // simple shade
-            var fixed_border_width = border_width + 1;
             ctx.new_path ();
             ctx.move_to (border_width, border_width);
             ctx.rel_line_to (width - (border_width) * 2, 0);
@@ -138,8 +127,9 @@ namespace ColorPicker {
                 ctx.new_path ();
                 int triangle_height = 10;
                 int triangle_width = 20;
+                
+                // fix: "+1" against rounding error
                 ctx.move_to ((width / color_list.size * selected_color + 1) + (width / color_list.size / 2 + 1), height - triangle_height);
-                // ctx.move_to (width - (width / color_list.size / 2, height) - triangle_height);
                 ctx.rel_line_to (triangle_width / 2, triangle_height);
                 ctx.rel_line_to (-1 * triangle_width, 0);
                 ctx.close_path ();  
@@ -150,6 +140,7 @@ namespace ColorPicker {
                 
                 // triangle border
                 ctx.new_path ();
+                // fix: "+1" against rounding error
                 ctx.move_to ((width / color_list.size * selected_color + 1) + (width / color_list.size / 2 + 1) - triangle_width / 2, height);
                 ctx.rel_line_to (triangle_width / 2, -1 * triangle_height);
                 ctx.rel_line_to (triangle_width / 2, triangle_height);

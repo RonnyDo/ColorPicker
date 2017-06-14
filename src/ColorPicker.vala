@@ -24,7 +24,7 @@ namespace ColorPicker {
     public class ColorPickerApp : Granite.Application {
     
         private static ColorPickerApp app;
-        private ColorPickerWindow window = null;
+        private ColorPickerWindow window;
         
         
         construct {
@@ -36,7 +36,7 @@ namespace ColorPicker {
             });
 
             add_action (quit_action);
-            add_accelerator ("<Control>q", "app.quit", null);
+            set_accels_for_action ("app.quit", {"<Control>q"});
         }
         
         public static ColorPickerApp get_instance () {
@@ -49,6 +49,8 @@ namespace ColorPicker {
         
         protected override void activate () {
             window = new ColorPickerWindow();
+            
+            window.destroy.connect (Gtk.main_quit);
             window.set_application (this);
             window.show_all ();
         }
