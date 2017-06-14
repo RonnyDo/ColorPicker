@@ -1,6 +1,11 @@
 namespace ColorPicker {
 
     public struct ExtRGBA : Gdk.RGBA {
+                                     
+         /* format like #3F92AA */
+         public string to_uppercase_hex_string () {
+             return this.to_hex_string ().up ();
+         }
 
         /* format like #3f92aa */
         public string to_hex_string () {        
@@ -9,11 +14,6 @@ namespace ColorPicker {
                         (uint) (this.green * 255),
                         (uint) (this.blue * 255));
             return s;
-        }
-        
-        /* format like #3F92AA */
-        public string to_uppercase_hex_string () {
-            return this.to_hex_string ().up ();
         }
         
         /* format like rgb(211, 32, 128) */
@@ -47,7 +47,7 @@ namespace ColorPicker {
         }
 
 
-        /* format like QML.Gdk.RGBA(211, 32, 128, 1) */
+        /* format like "Qt.rgba(211, 32, 128, 1.0) */
         public string to_qml_qt_rgba_string () {        
             string s = "Qt.rgba(%i, %i, %i, 1.0)"
                 .printf((int) (this.red * 255),

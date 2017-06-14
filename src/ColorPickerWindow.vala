@@ -22,6 +22,8 @@
 namespace ColorPicker {
     
     public class ColorPickerWindow: Gtk.Dialog {
+    
+        ExtRGBA ext_active_color = ExtRGBA ();
         
         public ColorPickerWindow () {
             Object (application: application,
@@ -35,17 +37,17 @@ namespace ColorPicker {
         
         
         construct {
-            // main box            
-            var color_area = new ColorArea (); 
+            // main box      
+            ext_active_color.parse ("#FFFFFF");
+                  
+            var color_area = new ColorArea ();
+            color_area.set_color (ext_active_color);
             
-            stdout.printf("started");
-            
-            var hex_label = new Gtk.Label ("#FFFFFF");
+            var hex_label = new Gtk.Label (ext_active_color.to_uppercase_hex_string ());
             hex_label.halign = Gtk.Align.END;       
             hex_label.valign = Gtk.Align.END;
             hex_label.set_selectable (true);
             hex_label.set_use_markup (true);
-            //hex_label.set_markup (Markup.printf_escaped (("<b>%s</b>"), "#FFFFFF"));
             
             hex_label.get_style_context ().add_class ("h1");
             
@@ -74,16 +76,19 @@ namespace ColorPicker {
             format_label.halign = Gtk.Align.START;
             
             var format_entry = new Gtk.Entry ();
-            format_entry.placeholder_text = "rgb(255,255,255)";
+            format_entry.placeholder_text = ext_active_color.to_css_rgb_string ();
             format_entry.set_editable (false);
             format_entry.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-copy");     
             format_entry.margin_right = 6;
             
             var color_format_combobox = new Gtk.ComboBoxText ();
-            color_format_combobox.append_text ("RGBA");
-            color_format_combobox.append_text ("CSS RGBA");
-            color_format_combobox.append_text ("QML QT RGBA");
-            color_format_combobox.active = 0;
+            color_format_combobox.append_text ("HEX");
+            color_format_combobox.append_text ("hex");
+            color_format_combobox.append_text ("rgb");
+            color_format_combobox.append_text ("rgba");
+            color_format_combobox.append_text ("Gdk RGBA");
+            color_format_combobox.append_text ("Qt rgba");
+            color_format_combobox.active = 2;
             
             var adjust_button = new Gtk.Button.from_icon_name ("media-eq-symbolic");
             adjust_button.margin_left = 12;
@@ -122,13 +127,8 @@ namespace ColorPicker {
                 		
     		var content_box = get_content_area () as Gtk.Box; 		
     		content_box.pack_start (skeleton_box);
-    		
-    		format_entry.icon_press.connect ((pos, event) => {
-                if (pos == Gtk.EntryIconPosition.SECONDARY) {
-                    Gtk.Clipboard.get_default (this.get_display ()).set_text (format_entry.get_text (), -1);
-                }
-            });
-    		            
+    		    		        
+    		// activate color picker    
             pick_color_button.clicked.connect (() => {
                 var mouse_position = new ColorPicker.Widgets.MousePosition ();
                 mouse_position.show_all ();
@@ -141,6 +141,8 @@ namespace ColorPicker {
                 });                
 
                 mouse_position.cancelled.connect (() => {
+                    color_area.set_color (ext_active_color);
+                    color_area.queue_draw ();
                     mouse_position.close ();
                     this.present ();
                 });
@@ -148,10 +150,14 @@ namespace ColorPicker {
                 var win = mouse_position.get_window ();
                 
                 mouse_position.picked.connect ((t, color) => {
-                    color_area.set_color (color);
+                    ext_active_color = (ExtRGBA) color;
+                    color_area.set_color (ext_active_color);
                     color_area.queue_draw ();
-                    format_entry.text = color.to_string ();
-                    color_history.add_color (color);       
+                                                        
+                    int id = color_format_combobox.get_active ();                
+                    update_color_format_combobox_text (format_entry, id);
+                    
+                    color_history.add_color (ext_active_color);       
                                                
                     var color_list = color_history.get_color_list ();
                     
@@ -165,22 +171,61 @@ namespace ColorPicker {
                     mouse_position.close ();
                     this.present ();                    
                 });
+            });
+            
+            
+            // enable copy feature
+    		format_entry.icon_press.connect ((pos, event) => {
+                if (pos == Gtk.EntryIconPosition.SECONDARY) {
+                    Gtk.Clipboard.get_default (this.get_display ()).set_text (format_entry.get_text (), -1);
+                }
+            });
+            
+            color_format_combobox.changed.connect (() => {
+                int id = color_format_combobox.get_active ();                
+     			update_color_format_combobox_text (format_entry, id);
+     		});
+            
+            // handle changed color in color history
+            color_history.color_clicked.connect ((t, color) => {
+                ext_active_color = (ExtRGBA) color;
+                color_area.set_color (ext_active_color);
+                color_area.queue_draw ();
+                                   
+                hex_label.set_markup (ext_active_color.to_uppercase_hex_string ());
+                                
+                int id = color_format_combobox.get_active ();                
+                update_color_format_combobox_text (format_entry, id);
                 
-                color_history.color_clicked.connect ((t, color) => {
-                    color_area.set_color (color);
-                    color_area.queue_draw ();
-                    
-                    var ext_color = (ExtRGBA) color;                    
-                    hex_label.set_markup (ext_color.to_uppercase_hex_string ());
-                    format_entry.text = ext_color.to_string ();
-                    
-                    this.present ();                    
-                });
+                this.present ();                    
             });
           
-            // trigger pciker on startup
+            // trigger picker on startup
             pick_color_button.clicked ();
-        }    
+        }
+        
+        private void update_color_format_combobox_text (Gtk.Entry format_entry, int id) {			
+           switch (id) {
+               case 0:
+                   format_entry.text = ext_active_color.to_uppercase_hex_string ();
+                   break;
+               case 1:
+                   format_entry.text = ext_active_color.to_hex_string ();
+                   break;
+               case 2:
+                   format_entry.text = ext_active_color.to_css_rgb_string ();
+                   break;
+               case 3:
+                   format_entry.text = ext_active_color.to_css_rgba_string ();
+                   break;
+               case 4:
+                   format_entry.text = ext_active_color.to_gdk_rgba_string ();
+                   break;
+               case 5:
+                   format_entry.text = ext_active_color.to_qml_qt_rgba_string ();
+                   break;
+           }
+        }
         
     }
     
