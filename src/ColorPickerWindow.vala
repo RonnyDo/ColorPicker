@@ -38,6 +38,8 @@ namespace ColorPicker {
             // main box            
             var color_area = new ColorArea (); 
             
+            stdout.printf("started");
+            
             var hex_label = new Gtk.Label ("#FFFFFF");
             hex_label.halign = Gtk.Align.END;       
             hex_label.valign = Gtk.Align.END;
@@ -150,9 +152,7 @@ namespace ColorPicker {
                     color_area.queue_draw ();
                     format_entry.text = color.to_string ();
                     color_history.add_color (color);       
-                    
-                    var l = new Gtk.Button.with_label ("Pick Color");
-                           
+                                               
                     var color_list = color_history.get_color_list ();
                     
                     if (color_history_box.get_parent () == null) {
@@ -163,6 +163,17 @@ namespace ColorPicker {
                     }
                                         
                     mouse_position.close ();
+                    this.present ();                    
+                });
+                
+                color_history.color_clicked.connect ((t, color) => {
+                    color_area.set_color (color);
+                    color_area.queue_draw ();
+                    
+                    var ext_color = (ExtRGBA) color;                    
+                    hex_label.set_markup (ext_color.to_uppercase_hex_string ());
+                    format_entry.text = ext_color.to_string ();
+                    
                     this.present ();                    
                 });
             });

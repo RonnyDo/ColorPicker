@@ -1,6 +1,8 @@
 namespace ColorPicker {
     
     public class ColorHistory: Gtk.DrawingArea {
+    
+        public signal void color_clicked (Gdk.RGBA color);
         
         const int max_colors = 6;
         Gee.ArrayList<Gdk.RGBA?> color_list;
@@ -12,14 +14,22 @@ namespace ColorPicker {
         const string triangle_color_string = "#F5F5F5";
         private Gdk.RGBA triangle_color = new Gdk.RGBA();
         
-        
-        int shadow_width = 16;    
+        const int shadow_width = 16;    
         const string shadow_color_string = "#000000"; 
         //const string shadow_color_string = "#A9A9A9";
+        
+        // index if selected color, starting from 0
+        int selected_color = 0;
         
         
         public ColorHistory () {
             set_size_request (100, 28);
+            
+            
+            
+            add_events(Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK | Gdk.EventMask.ENTER_NOTIFY_MASK);
+            //this.add_events(Gdk.EventMask.ALL_EVENTS_MASK );
+          
             color_list = new Gee.ArrayList<Gdk.RGBA?> ();
             
             border_color.parse (border_color_string); 
@@ -28,11 +38,17 @@ namespace ColorPicker {
             
         }
         
+        construct {
+            
+            get_window ().set_cursor (new Gdk.Cursor (Gdk.CursorType.HAND2));
+        }
+        
         public void add_color (Gdk.RGBA color) {
             if (color_list.size == max_colors) {
                 remove_oldest_color ();
             }
-            color_list.add (color);            
+            color_list.add (color);
+            selected_color = get_color_list ().size - 1;     
         }
         
         public void remove_oldest_color () {
@@ -41,7 +57,8 @@ namespace ColorPicker {
         
         public Gee.ArrayList<Gdk.RGBA?> get_color_list () {
             return color_list;
-        }
+        }        
+        
               
         /* Widget is asked to draw itself */
         public override bool draw (Cairo.Context ctx) {
@@ -80,10 +97,9 @@ namespace ColorPicker {
             
             ctx.set_line_width (border_width);   
             ctx.stroke ();
-             
+                        
             
-            
-           /*
+            /*
             // real faded shade
             for (int i = 1; i <= shadow_width; i++) {            
                 ctx.new_path ();
@@ -116,13 +132,14 @@ namespace ColorPicker {
             ctx.stroke ();
             
             
-            /*
+            
             // triangle (Is used to indicate the selected color, which isn't implemented yet)        
             if (color_list.size > 0) {
                 ctx.new_path ();
                 int triangle_height = 10;
                 int triangle_width = 20;
-                ctx.move_to (width - width / color_list.size / 2, height - triangle_height);
+                ctx.move_to ((width / color_list.size * selected_color + 1) + (width / color_list.size / 2 + 1), height - triangle_height);
+                // ctx.move_to (width - (width / color_list.size / 2, height) - triangle_height);
                 ctx.rel_line_to (triangle_width / 2, triangle_height);
                 ctx.rel_line_to (-1 * triangle_width, 0);
                 ctx.close_path ();  
@@ -133,7 +150,7 @@ namespace ColorPicker {
                 
                 // triangle border
                 ctx.new_path ();
-                ctx.move_to (width - width / color_list.size / 2 - triangle_width / 2, height);
+                ctx.move_to ((width / color_list.size * selected_color + 1) + (width / color_list.size / 2 + 1) - triangle_width / 2, height);
                 ctx.rel_line_to (triangle_width / 2, -1 * triangle_height);
                 ctx.rel_line_to (triangle_width / 2, triangle_height);
                 Gdk.cairo_set_source_rgba (ctx, border_color);
@@ -141,10 +158,35 @@ namespace ColorPicker {
                 ctx.set_line_width (border_width);
                 
                 ctx.stroke ();  
-            }
-            */
+            }            
             
             return true;
+        }
+        
+        public override bool enter_notify_event (Gdk.EventCrossing e)  {
+            e.window.set_cursor(
+                new Gdk.Cursor.from_name(Gdk.Display.get_default(), "hand2")
+            );
+            
+            return true;
+        }
+        
+        
+        public override bool button_release_event (Gdk.EventButton e) {   
+             
+            stdout.printf("clicked");
+            if (e.button != 1) {
+                return true;
+            }
+            
+            // get color at mouse position
+            var width = get_allocated_width ();
+            selected_color = (int) (e.x / (width / color_list.size + 1));
+                        
+            color_clicked (color_list.get (selected_color));
+            
+            queue_draw ();
+            return true;            
         }
     }
 }
