@@ -1,5 +1,5 @@
 project('com.github.ronnydo.colorpicker', ['vala', 'c'],
-    version: '0.1.1'
+    version: '0.1.2'
 )
 
 gnome = import('gnome')

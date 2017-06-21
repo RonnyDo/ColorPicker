@@ -1,5 +1,13 @@
-com.github.ronnydo.colorpicker (0.1.0) xenial; urgency=low
+com.github.ronnydo.colorpicker (0.1.2) xenial; urgency=low
+
+  * Fix build information
+
+ -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 21 Jun 2017 08:53:39 +0100
+
+  * Added debian files and logo files
+
+ -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 18 Jun 2017 08:53:39 +0100
 
   * First official release.
 
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 15 Apr 2017 08:53:39 +0100
+ -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 15 Jun 2017 08:53:39 +0100
