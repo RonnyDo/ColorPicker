@@ -8,7 +8,7 @@ One Color Picker to rule them all! No overhelming menus and settings. Just a dia
 ![ColorPicker Screenshot](https://raw.github.com/ronnydo/colorpicker/master/data/screenshot.png)
 
 ## Appcenter
-Color Picker will be soon available on (Appcenter)[https://github.com/elementary/appcenter]!
+Color Picker will be soon available on [Appcenter](https://github.com/elementary/appcenter)!
 
 ## Dependencies
 You'll need the following dependencies to build:
@@ -18,6 +18,7 @@ You'll need the following dependencies to build:
 * valac
 
 ## Build, Install and Run
+In the projects root folder call:
     meson build && cd build
     mesonconf -Dprefix=/usr
     ninja
