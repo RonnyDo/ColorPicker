@@ -28,7 +28,7 @@ namespace ColorPicker {
         public ColorPickerWindow (Gtk.Application application) {
             Object (application: application,
                 icon_name: "com.github.ronnydo.colorpicker",
-                    title: "Color Picker",
+                    title: _("Color Picker"),
                     resizable: false,
                     //height_request: 500,
                     width_request: 500
@@ -51,7 +51,7 @@ namespace ColorPicker {
             hex_label.get_style_context ().add_class ("h1");
             
             
-            var pick_color_button = new Gtk.Button.with_label ("Pick Color");
+            var pick_color_button = new Gtk.Button.with_label (_("Pick Color"));
             pick_color_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);         
             pick_color_button.halign = Gtk.Align.END;
             pick_color_button.valign = Gtk.Align.BASELINE;
@@ -70,7 +70,7 @@ namespace ColorPicker {
             main_box.pack_start (main_right_box);
             
             // format box
-            var format_label = new Gtk.Label ("Format");
+            var format_label = new Gtk.Label (_("Format"));
             format_label.get_style_context ().add_class ("h4");
             format_label.halign = Gtk.Align.START;
             
@@ -104,7 +104,7 @@ namespace ColorPicker {
             // format_box.pack_start (adjust_button);
             
             // color history box
-            var color_history_label = new Gtk.Label ("Color History");
+            var color_history_label = new Gtk.Label (_("Color History"));
             color_history_label.get_style_context ().add_class ("h4");
             color_history_label.halign = Gtk.Align.START;
             
