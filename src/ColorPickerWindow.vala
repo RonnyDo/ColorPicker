@@ -25,7 +25,7 @@ namespace ColorPicker {
     
         ExtRGBA ext_active_color = ExtRGBA ();
         
-        public ColorPickerWindow () {
+        public ColorPickerWindow (Gtk.Application application) {
             Object (application: application,
                 icon_name: "com.github.ronnydo.colorpicker",
                     title: "Color Picker",
@@ -33,8 +33,7 @@ namespace ColorPicker {
                     //height_request: 500,
                     width_request: 500
                     );  
-        }       
-        
+        }        
         
         construct {
             // main box      

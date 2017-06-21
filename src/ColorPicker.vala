@@ -22,49 +22,42 @@
 namespace ColorPicker {
     
     public class ColorPickerApp : Granite.Application {
-    
-        private static ColorPickerApp app;
-        private ColorPickerWindow window;
         
-        
-        construct {
-            var quit_action = new SimpleAction ("quit", null);
-            quit_action.activate.connect (() => {
-             if (window != null) {
-                 window.destroy ();
-             }
-            });
-
-            add_action (quit_action);
-            set_accels_for_action ("app.quit", {"<Control>q"});
-        }
-        
-        public static ColorPickerApp get_instance () {
-            if (app == null) {
-             app = new ColorPickerApp ();
-            }
-
-            return app;
+        public ColorPickerApp () {
+            Object (application_id: "com.github.ronnydo.colorpicker",
+            flags: ApplicationFlags.FLAGS_NONE);
         }
         
         protected override void activate () {
-            window = new ColorPickerWindow();
+            if (get_windows ().length () > 0) {
+                get_windows ().data.present ();
+                return;
+            }
             
-            window.destroy.connect (Gtk.main_quit);
-            window.set_application (this);
-            window.show_all ();
+            var app_window = new ColorPickerWindow (this);
+
+            app_window.show_all ();
+
+            var quit_action = new SimpleAction ("quit", null);
+
+            add_action (quit_action);
+            add_accelerator ("<Control>q", "app.quit", null);
+
+            quit_action.activate.connect (() => {
+                if (app_window != null) {
+                    app_window.destroy ();
+                }
+            });
         }
         
+        
+                
         public static int main (string[] args) {
-            Gtk.init (ref args);
+            // Gtk.init (ref args);
             
-            app = new ColorPickerApp ();
+            var app = new ColorPickerApp ();
             
-            app.run(args);
-
-            Gtk.main ();
-            return 0;   
+            return app.run(args);   
         }
-
     }
 }
