@@ -19,6 +19,7 @@ You'll need the following dependencies to build:
 
 ## Build, Install and Run
 In the projects root folder call:
+
     meson build && cd build
     mesonconf -Dprefix=/usr
     ninja
