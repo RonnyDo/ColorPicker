@@ -1,7 +1,0 @@
-/home/ronny/Vorlagen/Color_Picker/build/CMakeFiles/install.dir
-/home/ronny/Vorlagen/Color_Picker/build/CMakeFiles/list_install_components.dir
-/home/ronny/Vorlagen/Color_Picker/build/CMakeFiles/rebuild_cache.dir
-/home/ronny/Vorlagen/Color_Picker/build/CMakeFiles/com.github.ronnydo.colorpicker.dir
-/home/ronny/Vorlagen/Color_Picker/build/CMakeFiles/edit_cache.dir
-/home/ronny/Vorlagen/Color_Picker/build/CMakeFiles/install/strip.dir
-/home/ronny/Vorlagen/Color_Picker/build/CMakeFiles/install/local.dir

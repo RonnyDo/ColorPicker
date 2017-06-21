@@ -1,4 +1,4 @@
-Source: colorpicker
+Source: com.github.ronnydo.colorpicker
 Section: x11
 Priority: extra
 Maintainer: Ronny Dobra <ronnydobra at arcor dot de>
