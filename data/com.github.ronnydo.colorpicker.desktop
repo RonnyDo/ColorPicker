@@ -2,7 +2,7 @@
 Name=Color Picker
 Comment=The one and only Color Picker to speed up professionals workflow.
 Exec=com.github.ronnydo.colorpicker
-Icon=com.github.danrabbit.nimbus
+Icon=com.github.ronnydo.colorpicker
 Keywords=color;picker;selector;pipette
 Terminal=false
 Type=Application
