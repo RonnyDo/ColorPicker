@@ -29,9 +29,9 @@
      id="namedview52"
      showgrid="false"
      showguides="false"
-     inkscape:zoom="8"
-     inkscape:cx="20.541065"
-     inkscape:cy="26.715043"
+     inkscape:zoom="7.38"
+     inkscape:cx="33.660156"
+     inkscape:cy="29.967076"
      inkscape:window-x="1665"
      inkscape:window-y="30"
      inkscape:window-maximized="0"
@@ -219,7 +219,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -239,7 +239,7 @@
   </g>
   <g
      id="g4222"
-     transform="matrix(0.9995432,0,0,0.9995432,0.01460828,0.55421164)">
+     transform="matrix(0.9995432,0,0,0.9995432,0.01460828,0.41871028)">
     <path
        style="fill:#f2ec39;fill-opacity:1;stroke:none;stroke-width:0.34900001;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 39.616194,60.12505 A 29.426686,29.550249 0 0 0 60.42401,23.933533 29.426686,29.550249 0 0 0 24.38382,3.0383512 29.426686,29.550249 0 0 0 3.5760092,39.229869 29.426686,29.550249 0 0 0 39.616194,60.12505 Z"
@@ -304,17 +304,17 @@
   <path
      inkscape:connector-curvature="0"
      id="path8089-1-7-6"
-     d="M 61.387763,32.121486 A 29.387758,29.511157 0 0 1 31.999989,61.632642 29.387758,29.511157 0 0 1 2.6122369,32.121486 29.387758,29.511157 0 0 1 31.999989,2.6103278 29.387758,29.511157 0 0 1 61.387763,32.121486 Z"
+     d="M 61.387763,31.985985 A 29.387758,29.511157 0 0 1 31.999989,61.497141 29.387758,29.511157 0 0 1 2.6122369,31.985985 29.387758,29.511157 0 0 1 31.999989,2.4748264 29.387758,29.511157 0 0 1 61.387763,31.985985 Z"
      style="opacity:0.4;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.01068568;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   <path
      inkscape:connector-curvature="0"
      id="path8089-1-3-92-1"
-     d="M 60.408749,32.121486 A 28.408746,28.528035 0 0 1 31.999992,60.64952 28.408746,28.528035 0 0 1 3.5912509,32.121486 28.408746,28.528035 0 0 1 31.999992,3.5934491 28.408746,28.528035 0 0 1 60.408749,32.121486 Z"
+     d="M 60.408749,31.985985 A 28.408746,28.528035 0 0 1 31.999992,60.514019 28.408746,28.528035 0 0 1 3.5912509,31.985985 28.408746,28.528035 0 0 1 31.999992,3.4579477 28.408746,28.528035 0 0 1 60.408749,31.985985 Z"
      style="opacity:0.5;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.99692827;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   <g
      style="opacity:0.05;fill:#000000;fill-opacity:1"
      id="g8243-2-7-4"
-     transform="matrix(0.14325492,0.14385644,-0.14325492,0.14385644,23.912004,-108.85636)">
+     transform="matrix(0.14325492,0.14385644,-0.14325492,0.14385644,23.912004,-108.99186)">
     <path
        inkscape:connector-curvature="0"
        style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.34900001;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -329,7 +329,7 @@
   <g
      style="opacity:0.15;fill:#000000;fill-opacity:1"
      id="g8243-2-7-5"
-     transform="matrix(0.13948439,0.1400701,-0.13948439,0.1400701,24.124884,-105.96951)">
+     transform="matrix(0.13948439,0.1400701,-0.13948439,0.1400701,24.124884,-106.10501)">
     <path
        inkscape:connector-curvature="0"
        style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.34900001;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -343,7 +343,7 @@
   </g>
   <g
      id="g4667"
-     transform="matrix(0.54449711,0,0,0.54449711,-6.6651445,-5.1651764)">
+     transform="matrix(0.54449711,0,0,0.54449711,-6.6651445,-5.3006778)">
     <path
        inkscape:connector-curvature="0"
        style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.34900001;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
