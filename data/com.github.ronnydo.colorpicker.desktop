@@ -1,10 +1,9 @@
 [Desktop Entry]
 Name=Color Picker
 Comment=The one and only Color Picker to speed up professionals workflow.
-Categories=Utility;
 Exec=com.github.ronnydo.colorpicker
-Icon=application-default-icon
+Icon=com.github.danrabbit.nimbus
+Keywords=color;picker;selector;pipette
 Terminal=false
 Type=Application
-
-Keywords=Color;Picker;
+Categories=GTK;Utility;Graphics;Development
