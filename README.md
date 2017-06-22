@@ -18,7 +18,7 @@ You'll need the following dependencies to build:
 * valac
 
 ## Build, Install and Run
-In the projects root folder call:
+Call in the projects root folder:
 
     meson build && cd build
     mesonconf -Dprefix=/usr

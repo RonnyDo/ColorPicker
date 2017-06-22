@@ -1,13 +1,34 @@
+com.github.ronnydo.colorpicker (0.9.0) xenial; urgency=medium
+
+  * Beta release
+  * Fixing issue #4
+  * Fixing issue #5
+  * Fixing issue #6
+  * Fixing issue #7
+  * Add German translation
+
+ -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 21 Jun 2017 19:22:00 +0100
+
 com.github.ronnydo.colorpicker (0.1.2) xenial; urgency=low
 
   * Fix build information
 
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 21 Jun 2017 08:53:39 +0100
+ -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 21 Jun 2017 19:22:00 +0100
+ 
+com.github.ronnydo.colorpicker (0.1.1) xenial; urgency=low
 
   * Added debian files and logo files
 
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 18 Jun 2017 08:53:39 +0100
+ -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 19 Jun 2017 00:44:00 +0100
+  
+com.github.ronnydo.colorpicker (0.1.0) xenial; urgency=low
 
-  * First official release.
+  * First official release
 
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 15 Jun 2017 08:53:39 +0100
+ -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 15 Jun 2017 13:21:00 +0100
+ 
+com.github.ronnydo.colorpicker (0.0.1) xenial; urgency=low
+
+  * Release Test
+
+ -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 15 Jun 2017 12:59:00 +0100
