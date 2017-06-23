@@ -1,13 +1,20 @@
+com.github.ronnydo.colorpicker (0.9.1) xenial; urgency=medium
+
+  * Fix issue #8
+  
+ -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 23 Jun 2017 09:45:00 +0100
+
 com.github.ronnydo.colorpicker (0.9.0) xenial; urgency=medium
 
   * Beta release
-  * Fixing issue #4
-  * Fixing issue #5
-  * Fixing issue #6
-  * Fixing issue #7
+  * Fix issue #4
+  * Fix issue #5
+  * Fix issue #6
+  * Fix issue #7
+  * Update icons
   * Add German translation
 
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 21 Jun 2017 19:22:00 +0100
+ -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 22 Jun 2017 23:02:00 +0100
 
 com.github.ronnydo.colorpicker (0.1.2) xenial; urgency=low
 
