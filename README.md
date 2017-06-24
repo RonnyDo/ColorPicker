@@ -1,14 +1,23 @@
 # Color Picker
 
-One Color Picker to rule them all! No overhelming menus and settings. Just a dialog with all the features you'll need:
+One Color Picker to rule them all! No overhelming menus or settings. An easy tool with the features you need.
+
+Features:
 * Pick a color
 * Choose between multiple Color Formats
 * Let the Color History remember your last colors
 
 ![ColorPicker Screenshot](https://raw.github.com/ronnydo/colorpicker/master/data/screenshot.png)
 
-## Appcenter
-Color Picker will be soon available on [Appcenter](https://github.com/elementary/appcenter)!
+## Installation
+On elementaryOS? Simply install Color Picker from Appcenter:
+<p align="center">
+  <a href="https://appcenter.elementary.io/com.github.ronnydo.colorpicker">
+    <img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter">
+  </a>
+</p>
+
+Otherwise you can download and install the [latest .deb file](https://github.com/ronnydo/colorpicker/release/latest).
 
 ## Dependencies
 You'll need the following dependencies to build:
