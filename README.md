@@ -10,7 +10,7 @@ Features:
 ![ColorPicker Screenshot](https://raw.github.com/ronnydo/colorpicker/master/data/screenshot.png)
 
 ## Installation
-On elementaryOS? Simply install Color Picker from Appcenter:
+On elementaryOS? Simply install Color Picker from AppCenter:
 <p align="center">
   <a href="https://appcenter.elementary.io/com.github.ronnydo.colorpicker">
     <img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter">
