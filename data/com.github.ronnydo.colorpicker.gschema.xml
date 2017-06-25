@@ -13,5 +13,10 @@
             <summary>Most recent y position of app window</summary>
             <description>Most recent y position of app window</description>
         </key>
+        <key name="color-history" type="as">
+	        <default>[]</default>
+	        <summary>Color History</summary>
+	        <description>Color History</description>
+        </key>
     </schema>
 </schemalist>

@@ -46,25 +46,62 @@ namespace ColorPicker {
             set_size_request (100, 28);
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK | Gdk.EventMask.ENTER_NOTIFY_MASK);
             color_list = new Gee.ArrayList<Gdk.RGBA?> ();
+            restore_colors ();
             border_color.parse (border_color_string); 
-            triangle_color.parse (triangle_color_string);            
+            triangle_color.parse (triangle_color_string);
         }
         
         construct {            
-            //get_window ().set_cursor (new Gdk.Cursor (Gdk.CursorType.HAND2));
-            get_window ().set_cursor (new Gdk.Cursor.for_display (Gdk.Display.get_default (), Gdk.CursorType.HAND2));
+            get_window ().set_cursor (new Gdk.Cursor.for_display (Gdk.Display.get_default (), Gdk.CursorType.HAND2));              
         }
         
+        private void restore_colors () {   
+            var settings = new Settings ("com.github.ronnydo.colorpicker");
+            var color_array = settings.get_strv ("color-history");
+            
+            if (color_array != null) {            
+                // if more colors should be saved as allowed, drop the oldest ones.
+                if (max_colors < color_array.length) {
+                    int offset = color_array.length - max_colors;
+                    var sliced_array = color_array [offset:color_array.length];
+                    color_array = sliced_array;
+                }
+                
+                foreach (var color_value in color_array) {
+                    Gdk.RGBA color = Gdk.RGBA();
+                    color.parse(color_value);
+                    color_list.add (color);
+                }
+                
+                selected_color = color_list.size - 1;     
+            }
+        }
+        
+        private void store_colors () {
+            var c_list = get_color_list ();
+            string[] c_array = new string[c_list.size + 1];
+            
+            for (int i = 0; i < c_list.size; i++) {
+                c_array[i] = c_list.get (i).to_string ();
+            }
+                       
+            var settings = new Settings ("com.github.ronnydo.colorpicker");
+            settings.set_strv ("color-history", c_array);
+        } 
+        
         public void add_color (Gdk.RGBA color) {
-            if (color_list.size == max_colors) {
+            if (color_list.size >= max_colors) {
                 remove_oldest_color ();
             }
             color_list.add (color);
-            selected_color = get_color_list ().size - 1;     
+            store_colors ();
+            
+            selected_color = get_color_list ().size - 1;
         }
         
         public void remove_oldest_color () {
             color_list.remove_at (0);
+            store_colors ();
         }
         
         public Gee.ArrayList<Gdk.RGBA?> get_color_list () {
@@ -74,7 +111,6 @@ namespace ColorPicker {
               
         /* Widget is asked to draw itself */
         public override bool draw (Cairo.Context ctx) {
-                       
         
             int width = get_allocated_width (); // better element_width / amount
             int height = get_allocated_height ();
@@ -89,7 +125,7 @@ namespace ColorPicker {
                 ctx.rel_line_to (-1 * width / color_list.size - 1, 0);
                 ctx.close_path ();
                                 
-                Gdk.cairo_set_source_rgba (ctx, color_list.get(i));
+                Gdk.cairo_set_source_rgba (ctx, color_list.get (i));
                 
                 ctx.fill ();
             }

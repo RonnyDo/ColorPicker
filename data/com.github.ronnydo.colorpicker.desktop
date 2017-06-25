@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Color Picker
-Comment=The one and only Color Picker to speed up professionals workflow.
+Comment=An intuitive Color Picker
 Exec=com.github.ronnydo.colorpicker
 Icon=com.github.ronnydo.colorpicker
 Keywords=color;picker;selector;pipette;

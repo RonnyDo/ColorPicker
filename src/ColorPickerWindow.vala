@@ -123,10 +123,27 @@ namespace ColorPicker {
             skeleton_box.margin_bottom = 0;        
             skeleton_box.pack_start (main_box);            
             skeleton_box.pack_start (format_box);
-                		
+            
     		var content_box = get_content_area () as Gtk.Box; 		
-    		content_box.pack_start (skeleton_box);
+    		content_box.pack_start (skeleton_box);   
+    		    		
     		
+            // restore old state
+    		var color_list = color_history.get_color_list ();
+    		if (color_list != null && color_list.size >= 1) {
+    		    ext_active_color = (ExtRGBA) color_list.last ();
+    		    
+    		    hex_label.set_markup (ext_active_color.to_uppercase_hex_string ());
+                color_area.set_color (ext_active_color);
+                color_area.queue_draw ();
+		        int id = color_format_combobox.get_active ();
+		        update_color_format_combobox_text (format_entry, id);
+		        
+		        if (color_list.size >= 2) {
+		            skeleton_box.pack_start (color_history_box);
+                    color_history_box.show_all ();
+		        }
+    		}
     		
             var settings = new Settings ("com.github.ronnydo.colorpicker");
             var window_x = settings.get_int ("window-x");
@@ -151,6 +168,7 @@ namespace ColorPicker {
                 mouse_position.cancelled.connect (() => {
                     color_area.set_color (ext_active_color);
                     color_area.queue_draw ();
+                    hex_label.set_markup (ext_active_color.to_uppercase_hex_string ());
                     mouse_position.close ();
                     this.present ();
                 });
@@ -167,10 +185,10 @@ namespace ColorPicker {
                     
                     color_history.add_color (ext_active_color);       
                                                
-                    var color_list = color_history.get_color_list ();
+                    var c_list = color_history.get_color_list ();
                     
                     if (color_history_box.get_parent () == null) {
-                        if (color_list != null && color_list.size > 1) {
+                        if (c_list != null && c_list.size >= 2) {
                             skeleton_box.pack_start (color_history_box);
                             color_history_box.show_all ();
                         }
@@ -207,7 +225,8 @@ namespace ColorPicker {
                 
                 this.present ();                    
             });
-          
+                                  
+                		          
             // trigger picker on startup
             pick_color_button.clicked ();
         }
