@@ -35,7 +35,7 @@ namespace ColorPicker {
             }
             
             var app_window = new ColorPickerWindow (this);
-
+            
             app_window.show_all ();
 
             var quit_action = new SimpleAction ("quit", null);

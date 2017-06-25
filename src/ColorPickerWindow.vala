@@ -22,7 +22,7 @@
 namespace ColorPicker {
     
     public class ColorPickerWindow: Gtk.Dialog {
-    
+            
         ExtRGBA ext_active_color = ExtRGBA ();
         
         public ColorPickerWindow (Gtk.Application application) {
@@ -36,7 +36,8 @@ namespace ColorPicker {
         }        
         
         construct {
-            // main box      
+            // main box           
+            
             ext_active_color.parse ("#FFFFFF");
                   
             var color_area = new ColorArea ();
@@ -48,8 +49,7 @@ namespace ColorPicker {
             hex_label.set_selectable (true);
             hex_label.set_use_markup (true);
             
-            hex_label.get_style_context ().add_class ("h1");
-            
+            hex_label.get_style_context ().add_class ("h1");            
             
             var pick_color_button = new Gtk.Button.with_label (_("Pick Color"));
             pick_color_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);         
@@ -126,7 +126,16 @@ namespace ColorPicker {
                 		
     		var content_box = get_content_area () as Gtk.Box; 		
     		content_box.pack_start (skeleton_box);
-    		    		        
+    		
+    		
+            var settings = new Settings ("com.github.ronnydo.colorpicker");
+            var window_x = settings.get_int ("window-x");
+            var window_y = settings.get_int ("window-y");
+            
+            if (window_x != -1 ||  window_y != -1) {
+              move (window_x, window_y);
+            }
+                		    		    		    		        
     		// activate color picker    
             pick_color_button.clicked.connect (() => {
                 var mouse_position = new ColorPicker.Widgets.MousePosition ();
@@ -224,6 +233,18 @@ namespace ColorPicker {
                    format_entry.text = ext_active_color.to_qml_qt_rgba_string ();
                    break;
            }
+        }
+        
+        public override bool delete_event (Gdk.EventAny event) {   
+            // save window position             
+            int root_x, root_y;
+            get_position (out root_x, out root_y);
+            
+            var settings = new Settings ("com.github.ronnydo.colorpicker");
+            settings.set_int ("window-x", root_x);
+            settings.set_int ("window-y", root_y);
+            
+            return false;
         }
         
     }

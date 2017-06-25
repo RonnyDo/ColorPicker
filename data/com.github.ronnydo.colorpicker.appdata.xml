@@ -7,11 +7,12 @@
   <name>Color Picker</name>
   <summary>The most intuitive Color Picker to speed up your workflow.</summary>
   <description>
-    <p>One Color Picker to rule them all! No overhelming menus and settings. Just a dialog with all the features you'll need:</p>
+    <p>One Color Picker to rule them all! No overhelming menus or settings. An easy tool with the features you need.</p>
+    <p>Features:</p>
      <ul>
        <li>Pick a color</li>
-       <li>Choose between multiple <b>Color Formats</b></li>
-       <li>Let the <b>Color History</b> remember your last colors</li>
+       <li>Choose between multiple Color Formats</li>
+       <li>Let the Color History remember your last colors</li>
     </ul>
   </description>
   <provides>

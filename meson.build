@@ -26,13 +26,15 @@ executable(
     'src/Widgets/MousePosition.vala',
     c_args: c_args,
     dependencies: [
+        dependency('glib-2.0'),
+        dependency('gobject-2.0'),
         dependency('granite'),
         dependency('gtk+-3.0'),
     ],
     install : true
 )
 
-#meson.add_install_script('meson/post_install.py')
+meson.add_install_script('meson/post_install.py')
 
 subdir('data')
 subdir('po')
