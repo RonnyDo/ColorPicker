@@ -17,7 +17,7 @@ On elementaryOS? Simply install Color Picker from AppCenter:
   </a>
 </p>
 
-Otherwise you can download and install the [latest .deb file](https://github.com/ronnydo/colorpicker/release/latest).
+Otherwise you can download and install the [latest .deb file](https://github.com/ronnydo/colorpicker/releases/latest).
 
 ## Dependencies
 You'll need the following dependencies to build:
@@ -27,7 +27,7 @@ You'll need the following dependencies to build:
 * valac
 
 ## Build, Install and Run
-Call in the projects root folder:
+Call in the project's root folder:
 
     meson build && cd build
     mesonconf -Dprefix=/usr
