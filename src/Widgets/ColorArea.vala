@@ -19,7 +19,7 @@
 * Authored by: Ronny Dobra <ronnydobra at arcor dot de>
 */
 
-namespace ColorPicker {
+namespace ColorPicker.Widgets {
     
     public class ColorArea: Gtk.DrawingArea {
         

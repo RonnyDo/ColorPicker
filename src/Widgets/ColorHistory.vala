@@ -18,7 +18,8 @@
 *
 * Authored by: Ronny Dobra <ronnydobra at arcor dot de>
 */
-namespace ColorPicker {
+
+namespace ColorPicker.Widgets {
     
     public class ColorHistory: Gtk.DrawingArea {
     
@@ -56,8 +57,7 @@ namespace ColorPicker {
         }
         
         private void restore_colors () {   
-            var settings = new Settings ("com.github.ronnydo.colorpicker");
-            var color_array = settings.get_strv ("color-history");
+            var color_array = settings.color_history;
             
             if (color_array != null) {            
                 // if more colors should be saved as allowed, drop the oldest ones.
@@ -85,8 +85,7 @@ namespace ColorPicker {
                 c_array[i] = c_list.get (i).to_string ();
             }
                        
-            var settings = new Settings ("com.github.ronnydo.colorpicker");
-            settings.set_strv ("color-history", c_array);
+            settings.color_history = c_array;
         } 
         
         public void add_color (Gdk.RGBA color) {
@@ -220,8 +219,6 @@ namespace ColorPicker {
         
         
         public override bool button_release_event (Gdk.EventButton e) {   
-             
-            stdout.printf("clicked");
             if (e.button != 1) {
                 return true;
             }

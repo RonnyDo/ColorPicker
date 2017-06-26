@@ -13,6 +13,11 @@
             <summary>Most recent y position of app window</summary>
             <description>Most recent y position of app window</description>
         </key>
+        <key name="color-format-index" type="i">
+	        <default>2</default>
+	        <summary>Most recent index of selected color format</summary>
+	        <description>Most recent index of selected color format</description>
+        </key>
         <key name="color-history" type="as">
 	        <default>[]</default>
 	        <summary>Color History</summary>

@@ -24,7 +24,7 @@ namespace ColorPicker {
     public class ColorPickerWindow: Gtk.Dialog {
             
         ExtRGBA ext_active_color = ExtRGBA ();
-        
+                
         public ColorPickerWindow (Gtk.Application application) {
             Object (application: application,
                 icon_name: "com.github.ronnydo.colorpicker",
@@ -32,15 +32,14 @@ namespace ColorPicker {
                     resizable: false,
                     //height_request: 500,
                     width_request: 500
-                    );  
+            );
         }        
         
         construct {
-            // main box           
-            
+            // main box                       
             ext_active_color.parse ("#FFFFFF");
-                  
-            var color_area = new ColorArea ();
+            
+            var color_area = new ColorPicker.Widgets.ColorArea ();
             color_area.set_color (ext_active_color);
             
             var hex_label = new Gtk.Label (ext_active_color.to_uppercase_hex_string ());
@@ -87,7 +86,7 @@ namespace ColorPicker {
             color_format_combobox.append_text ("rgba");
             color_format_combobox.append_text ("Gdk RGBA");
             color_format_combobox.append_text ("Qt rgba");
-            color_format_combobox.active = 2;
+            color_format_combobox.active = settings.color_format_index;
             
             var adjust_button = new Gtk.Button.from_icon_name ("media-eq-symbolic");
             adjust_button.margin_start = 12;
@@ -108,7 +107,7 @@ namespace ColorPicker {
             color_history_label.get_style_context ().add_class ("h4");
             color_history_label.halign = Gtk.Align.START;
             
-            var color_history = new ColorHistory ();
+            var color_history = new ColorPicker.Widgets.ColorHistory ();
             
             var color_history_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);            
             color_history_box.margin_top = 6;
@@ -145,9 +144,8 @@ namespace ColorPicker {
 		        }
     		}
     		
-            var settings = new Settings ("com.github.ronnydo.colorpicker");
-            var window_x = settings.get_int ("window-x");
-            var window_y = settings.get_int ("window-y");
+            var window_x = settings.window_x;
+            var window_y = settings.window_y;
             
             if (window_x != -1 ||  window_y != -1) {
               move (window_x, window_y);
@@ -207,10 +205,15 @@ namespace ColorPicker {
                 }
             });
             
+            
+            //color_format_combobox.changed.connect (color_format_changed);
+            
             color_format_combobox.changed.connect (() => {
                 int id = color_format_combobox.get_active ();                
      			update_color_format_combobox_text (format_entry, id);
+     			ColorPicker.settings.color_format_index = id;
      		});
+     		
             
             // handle changed color in color history
             color_history.color_clicked.connect ((t, color) => {
@@ -259,9 +262,8 @@ namespace ColorPicker {
             int root_x, root_y;
             get_position (out root_x, out root_y);
             
-            var settings = new Settings ("com.github.ronnydo.colorpicker");
-            settings.set_int ("window-x", root_x);
-            settings.set_int ("window-y", root_y);
+            settings.window_x = root_x;
+            settings.window_y = root_y;
             
             return false;
         }

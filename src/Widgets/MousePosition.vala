@@ -22,6 +22,7 @@
 namespace ColorPicker.Widgets {
 
     public class MousePosition : Granite.Widgets.CompositedWindow {
+    
         public signal void picked (Gdk.RGBA color);
         public signal void cancelled ();
         public signal void moved (Gdk.RGBA color);

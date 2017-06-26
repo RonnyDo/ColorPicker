@@ -11,7 +11,7 @@
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 * General Public License for more details.
 *
-* You should have received a copy of the GNU General Public
+* You should have received a copy of the GNU General Public 
 * License along with this program; if not, write to the
 * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 * Boston, MA 02110-1301 USA
@@ -20,8 +20,12 @@
 */
 
 namespace ColorPicker {
+
+    // namespace-wide variable
+    public ColorPicker.Services.Settings settings;
     
     public class ColorPickerApp : Granite.Application {
+        
         
         public ColorPickerApp () {
             Object (application_id: "com.github.ronnydo.colorpicker",
@@ -33,6 +37,8 @@ namespace ColorPicker {
                 get_windows ().data.present ();
                 return;
             }
+            
+            settings = ColorPicker.Services.Settings.get_instance ();
             
             var app_window = new ColorPickerWindow (this);
             
