@@ -24,20 +24,32 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="842"
-     inkscape:window-height="961"
+     inkscape:window-width="1920"
+     inkscape:window-height="962"
      id="namedview52"
      showgrid="false"
      showguides="false"
-     inkscape:zoom="1"
-     inkscape:cx="1.7438941"
-     inkscape:cy="77.729381"
-     inkscape:window-x="1753"
-     inkscape:window-y="38"
-     inkscape:window-maximized="0"
+     inkscape:zoom="11.313708"
+     inkscape:cx="25.239104"
+     inkscape:cy="9.6894688"
+     inkscape:window-x="1600"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1"
      inkscape:current-layer="svg5644" />
   <defs
      id="defs5646">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4188">
+      <stop
+         style="stop-color:#f7f7f7;stop-opacity:1"
+         offset="0"
+         id="stop4190" />
+      <stop
+         style="stop-color:#f2f2f2;stop-opacity:1"
+         offset="1"
+         id="stop4192" />
+    </linearGradient>
     <radialGradient
        r="62.769119"
        fy="193.04066"
@@ -230,6 +242,15 @@
        xlink:href="#linearGradient3820-7-2-8-6"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(0.17524541,0,0,0.05575992,-1.3768094,18.119145)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4188"
+       id="linearGradient4194"
+       x1="71.341965"
+       y1="40.114685"
+       x2="71.341965"
+       y2="96.856537"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <metadata
      id="metadata5649">
@@ -239,7 +260,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -353,19 +374,21 @@
   </g>
   <g
      id="g4667"
-     transform="matrix(0.26169823,0,0,0.26169823,-2.5833858,-1.920854)">
+     transform="matrix(0.26169823,0,0,0.26169823,-2.5833858,-1.920854)"
+     style="fill-opacity:1;fill:url(#linearGradient4194)">
     <path
        inkscape:connector-curvature="0"
-       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.34900001;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:url(#linearGradient4194);fill-opacity:1;stroke:none;stroke-width:0.34900001;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 97.330311,42.284792 a 7.0356347,7.1986844 39.729891 0 0 -3.278971,-1.929288 7.0356347,7.1986844 39.729891 0 0 -6.812034,1.857219 l -0.0015,-0.0015 -6.337307,6.363917 -2.41292,-2.423051 c -1.365731,-1.371466 -3.564848,-1.371466 -4.930579,0 -1.365732,1.371466 -1.365732,3.579818 0,4.951284 l 14.756822,14.818785 c 1.365732,1.371467 3.56485,1.371467 4.930581,0 1.365731,-1.371466 1.365731,-3.579816 0,-4.951282 l -2.41292,-2.423052 6.337307,-6.363916 -0.0034,-0.0034 a 7.0356347,7.1986844 39.729891 0 0 1.851392,-6.838692 7.0356347,7.1986844 39.729891 0 0 -1.686523,-3.057054 z"
        id="rect8140-3-36" />
     <g
        transform="matrix(0.88241267,0,0,0.88241267,14.536297,13.778944)"
-       id="g4284">
+       id="g4284"
+       style="fill-opacity:1;fill:url(#linearGradient4194)">
       <path
          id="rect8172-9-2-12"
          d="m 66.974129,47.701228 -26.992865,27.106208 -0.0077,0.0077 0.0023,0.0023 -7.963775,15.460251 3.818679,3.834713 15.395056,-7.997766 0.0023,0.0023 0.0077,-0.0077 L 78.228591,59.002947 66.974236,47.701336 Z"
-         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.34900001;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:url(#linearGradient4194);fill-opacity:1;stroke:none;stroke-width:0.34900001;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          inkscape:connector-curvature="0" />
     </g>
   </g>
