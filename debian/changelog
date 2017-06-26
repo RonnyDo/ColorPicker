@@ -1,6 +1,12 @@
+com.github.ronnydo.colorpicker (0.9.4) xenial; urgency=medium
+
+  * Fix issue #16
+  
+ -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 26 Jun 2017 23:10:00 +0100
+
 com.github.ronnydo.colorpicker (0.9.3) xenial; urgency=medium
 
-  * Color Picker now restores your recent window position, color format color history! (issue #10, issue #11 and issue #15)
+  * Color Picker now restores your recent window position, color format and color history! (issue #10, issue #11 and issue #15)
   * Minor icon changes
   
  -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 26 Jun 2017 22:45:00 +0100
