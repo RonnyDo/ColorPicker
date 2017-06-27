@@ -23,7 +23,7 @@
   </categories>
   ​<launchable type="desktop-id">com.github.ronnydo.colorpicker.desktop</launchable>
   <releases>
-	​<release version="0.9.6" date="2017-06-27" urgency="medium">
+	​<release version="0.9.5" date="2017-06-27" urgency="medium">
 	​  <description>
 	    <ul>
 		  <li>Fix dark color scheme bug (issue #13)</li>
