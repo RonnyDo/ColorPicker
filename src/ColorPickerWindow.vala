@@ -38,7 +38,7 @@ namespace ColorPicker {
         construct {
             // main box                       
             ext_active_color.parse ("#FFFFFF");
-            
+                                    
             var color_area = new ColorPicker.Widgets.ColorArea ();
             color_area.set_color (ext_active_color);
             
@@ -153,7 +153,7 @@ namespace ColorPicker {
                 		    		    		    		        
     		// activate color picker    
             pick_color_button.clicked.connect (() => {
-                var mouse_position = new ColorPicker.Widgets.MousePosition ();
+                var mouse_position = new ColorPicker.Widgets.Picker ();
                 mouse_position.show_all ();
                 
                 mouse_position.moved.connect ((t, color) => {

@@ -15,12 +15,98 @@
        <li>Let the Color History remember your last colors</li>
     </ul>
   </description>
+  ​<categories>
+​    <category>GTK</category>
+​    <category>Utility</category>
+	<category>Graphics</category>
+	<category>Development</category>
+  </categories>
+  ​<launchable type="desktop-id">com.github.ronnydo.colorpicker.desktop</launchable>
+  <releases>
+	​<release version="0.9.6" date="2017-06-27" urgency="medium">
+	​  <description>
+	    <ul>
+		  <li>Fix dark color scheme bug (issue #13)</li>
+		  <li>Enhance project description</li>
+		</ul>
+	  </description>
+	​</release>
+	​<release version="0.9.4" date="2017-06-26" urgency="medium">
+	​  <description>
+	    <ul>
+		  <li>Fix build bug (issue #16)</li>
+		</ul>
+	  </description>
+	​</release>
+	​<release version="0.9.3" date="2017-06-26" urgency="medium">
+	​  <description>
+	    <ul>
+		  <li>Color Picker now restores your recent window position, color format and color history! (issue #10, issue #11 and issue #15)</li>
+		  <li>Minor icon changes</li>
+		</ul>
+	  </description>
+	​</release>
+	​<release version="0.9.2" date="2017-06-23" urgency="low">
+	​  <description>
+	    <ul>
+		  <li>Fix issue #8</li>
+		</ul>
+	  </description>
+	​</release>
+	​<release version="0.9.1" date="2017-06-23" urgency="low">
+	​  <description>
+	    <ul>
+		  <li>Fix issue #8</li>
+		</ul>
+	  </description>
+	​</release>
+  	​<release version="0.9.0" date="2017-06-22" urgency="medium">
+	​  <description>
+		<ul>
+		  <li>Beta release</li>
+		  <li>Fix issue #4</li>
+		  <li>Fix issue #5</li>
+		  <li>Fix issue #6</li>
+		  <li>Fix issue #7</li>
+		  <li>Update icons</li>
+		  <li>Add German translation</li>
+		</ul>
+	  </description>
+	​</release>
+	​<release version="0.1.2" date="2017-06-21" urgency="low">
+	​  <description>
+	    <ul>
+		  <li>Fix build information</li>
+		</ul>
+	  </description>
+	​</release>
+  	​<release version="0.1.1" date="2017-06-19" urgency="low">
+	​  <description>
+	    <ul>
+		  <li>Added debian files and logo files</li>
+		</ul>
+	  </description>
+	​</release>
+	​<release version="0.1.0" date="2017-06-15" urgency="low">
+	​  <description>
+		<ul>
+		  <li>First official release</li>
+		</ul>
+	  </description>
+	​</release>
+    <release version="1.0" date="2012-08-26"/>
+​  </releases>
   <provides>
 	<binary>com.github.ronnydo.colorpicker</binary>
   </provides>
   <screenshots>
 	<screenshot type="default">
+      <caption>Normal Mode</caption>
 	  <image>https://raw.githubusercontent.com/ronnydo/colorpicker/master/data/screenshot.png</image>
+	</screenshot>
+	<screenshot>
+      <caption>Dark Mode</caption>
+	  <image>https://raw.githubusercontent.com/ronnydo/colorpicker/master/data/screenshot_dark.png</image>
 	</screenshot>
   </screenshots>
   <developer_name>Ronny Dobra</developer_name>

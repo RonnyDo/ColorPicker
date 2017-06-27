@@ -1,3 +1,9 @@
+com.github.ronnydo.colorpicker (0.9.5) xenial; urgency=medium
+
+  * Fix issue #13
+  
+ -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 27 Jun 2017 23:20:00 +0100
+
 com.github.ronnydo.colorpicker (0.9.4) xenial; urgency=medium
 
   * Fix issue #16

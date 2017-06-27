@@ -21,7 +21,7 @@
 
 namespace ColorPicker.Widgets {
 
-    public class MousePosition : Granite.Widgets.CompositedWindow {
+    public class Picker : Granite.Widgets.CompositedWindow {
     
         public signal void picked (Gdk.RGBA color);
         public signal void cancelled ();
@@ -31,7 +31,7 @@ namespace ColorPicker.Widgets {
             type = Gtk.WindowType.POPUP;
         }
 
-        public MousePosition () {
+        public Picker () {
             stick ();
             set_resizable (true);
             set_deletable (false);
@@ -39,8 +39,9 @@ namespace ColorPicker.Widgets {
             set_skip_pager_hint (true);
             set_keep_above (true);
 
-            var screen = get_screen ();
+            var screen = get_screen ();            
             set_default_size (screen.get_width (), screen.get_height ());
+            
         }   
 
         

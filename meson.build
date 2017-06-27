@@ -23,7 +23,7 @@ executable(
     'src/ExtRGBA.vala',
     'src/Widgets/ColorArea.vala',
     'src/Widgets/ColorHistory.vala',
-    'src/Widgets/MousePosition.vala',
+    'src/Widgets/Picker.vala',
     'src/Services/Settings.vala',
     c_args: c_args,
     dependencies: [
