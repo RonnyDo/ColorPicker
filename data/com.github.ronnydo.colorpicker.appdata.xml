@@ -5,7 +5,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <name>Color Picker</name>
-  <summary>The most intuitive Color Picker to speed up your workflow.</summary>
+  <summary>The most intuitive Color Picker to speed up your workflow</summary>
   <description>
     <p>One Color Picker to rule them all! No overhelming menus or settings. An easy tool with the features you need.</p>
     <p>Features:</p>
@@ -21,7 +21,6 @@
 	<category>Graphics</category>
 	<category>Development</category>
   </categories>
-  ​<launchable type="desktop-id">com.github.ronnydo.colorpicker.desktop</launchable>
   <releases>
 	​<release version="0.9.5" date="2017-06-27" urgency="medium">
 	​  <description>
