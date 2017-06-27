@@ -101,11 +101,11 @@
   </provides>
   <screenshots>
 	<screenshot type="default">
-      <caption>Normal Mode</caption>
+      <caption>Normal variant</caption>
 	  <image>https://raw.githubusercontent.com/ronnydo/colorpicker/master/data/screenshot.png</image>
 	</screenshot>
 	<screenshot>
-      <caption>Dark Mode</caption>
+      <caption>Dark variant</caption>
 	  <image>https://raw.githubusercontent.com/ronnydo/colorpicker/master/data/screenshot_dark.png</image>
 	</screenshot>
   </screenshots>
