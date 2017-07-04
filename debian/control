@@ -13,4 +13,4 @@ Package: com.github.ronnydo.colorpicker
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: An intuitive Color Picker
- The most intuitive Color Picker to speed up your workflow.
+ The most intuitive Color Picker to speed up your workflow

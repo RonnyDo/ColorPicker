@@ -17,6 +17,7 @@
 * Boston, MA 02110-1301 USA
 *
 * Authored by: Ronny Dobra <ronnydobra at arcor dot de>
+* Inspired by: https://github.com/stuartlangridge/ColourPicker/
 */
 
 namespace ColorPicker.Widgets {
@@ -27,9 +28,23 @@ namespace ColorPicker.Widgets {
         public signal void cancelled ();
         public signal void moved (Gdk.RGBA color);
 
+        const string dark_border_color_string = "#333333";
+        private Gdk.RGBA dark_border_color = Gdk.RGBA();            
+
+        const string bright_border_color_string = "#FFFFFF";
+        private Gdk.RGBA bright_border_color = Gdk.RGBA();
+
+        
+        int snapsize = 35;  // must be odd
+        int zoomlevel = 3;
+        int min_zoomlevel = 2;
+        int max_zoomlevel = 7;
+
+
         construct {
             type = Gtk.WindowType.POPUP;
         }
+        
 
         public Picker () {
             stick ();
@@ -38,10 +53,12 @@ namespace ColorPicker.Widgets {
             set_skip_taskbar_hint (true);
             set_skip_pager_hint (true);
             set_keep_above (true);
+            
+            dark_border_color.parse (dark_border_color_string);            
+            bright_border_color.parse (bright_border_color_string);
 
             var screen = get_screen ();            
             set_default_size (screen.get_width (), screen.get_height ());
-            
         }   
 
         
@@ -55,13 +72,153 @@ namespace ColorPicker.Widgets {
 
             return true;            
         }
+        
+       
+       public override bool draw (Cairo.Context cr) {
+           
+           return false;
+       }
 
 
         public override bool motion_notify_event (Gdk.EventMotion e) {
             Gdk.RGBA color = get_color_at ((int) e.x_root, (int) e.y_root);
             moved (color);
             
+            set_magnifier_cursor ();
+            
             return true;            
+        }
+                
+        
+        public override bool scroll_event (Gdk.EventScroll e)  {
+            switch (e.direction) {
+                case Gdk.ScrollDirection.UP:
+                    if (zoomlevel < max_zoomlevel) {
+                        zoomlevel++;
+                    }
+                    set_magnifier_cursor ();
+                    break;
+                case Gdk.ScrollDirection.DOWN:
+                    if (zoomlevel > min_zoomlevel) {
+                        zoomlevel--;
+                    }
+                    set_magnifier_cursor ();
+                    break;
+                default:
+                    break;
+             }
+             
+             return true;
+        }            
+        
+        
+        public void set_magnifier_cursor () {
+             // draw cursor
+             int px, py;
+             get_pointer (out px, out py);
+
+             int shadow_width = 15;
+             var radius = snapsize * zoomlevel / 2;
+             
+             // take screenshot
+             var latest_pb = snap (px - snapsize / 2, py - snapsize / 2, 
+                  snapsize, snapsize);
+              
+             // Zoom that screenshot up, and grab a snapsize-sized piece from the middle
+             var scaled_pb = latest_pb.scale_simple (snapsize * zoomlevel + shadow_width * 2 , snapsize * zoomlevel + shadow_width * 2 , Gdk.InterpType.NEAREST);
+             // var scaled_pb_subset = new Gdk.Pixbuf.subpixbuf(scaled_pb, snapsize / 2 + 1, snapsize / 2 + 1, snapsize, snapsize);
+             
+             // Create the base surface for our cursor
+             var base_surface = new Cairo.ImageSurface (Cairo.Format.ARGB32, snapsize * zoomlevel + shadow_width * 2 , snapsize * zoomlevel + shadow_width * 2);
+             var base_context = new Cairo.Context (base_surface);
+             //base_context.scale (zoomlevel, zoomlevel);
+             
+             // Create the circular path on our base surface
+             base_context.arc (radius + shadow_width, radius + shadow_width, radius, 0, 2 * Math.PI);
+ 
+             // Paste in the screenshot
+             Gdk.cairo_set_source_pixbuf (base_context, scaled_pb, 0, 0);
+ 
+             // Clip to that circular path, keeping the path around for later, and paint the pasted screenshot
+             base_context.save ();
+             base_context.clip_preserve ();
+             base_context.paint ();   
+             base_context.restore ();
+ 
+ 
+             // Draw a shadow as outside magnifier border             
+             double shadow_alpha = 0.6;       
+             base_context.set_line_width (1);
+             
+             for (int i = 0; i <= shadow_width; i++) {
+                 base_context.arc (radius + shadow_width, radius + shadow_width, radius + shadow_width- i, 0, 2 * Math.PI);
+                 Gdk.RGBA shadow_color = Gdk.RGBA();
+                 shadow_color.parse(dark_border_color_string);  
+                 shadow_color.alpha = shadow_alpha / ((shadow_width - i + 1)*(shadow_width - i + 1));   
+                 Gdk.cairo_set_source_rgba (base_context, shadow_color); 
+                 base_context.stroke ();
+             }     
+        
+            // Draw an outside bright magnifier border  
+            Gdk.cairo_set_source_rgba (base_context, bright_border_color);
+            base_context.arc (radius + shadow_width, radius + shadow_width, radius - 1, 0, 2 * Math.PI);
+            base_context.stroke(); 
+
+
+            // Draw inside square
+            base_context.set_line_width (1);
+            
+            Gdk.cairo_set_source_rgba (base_context, dark_border_color); 
+            base_context.move_to (radius + shadow_width - zoomlevel, radius + shadow_width - zoomlevel);
+            base_context.line_to (radius + shadow_width + zoomlevel, radius + shadow_width - zoomlevel);
+            base_context.line_to (radius + shadow_width + zoomlevel, radius + shadow_width + zoomlevel);
+            base_context.line_to (radius + shadow_width - zoomlevel, radius + shadow_width + zoomlevel);
+            base_context.close_path ();
+            base_context.stroke ();             
+
+            Gdk.cairo_set_source_rgba (base_context, bright_border_color);        
+            base_context.move_to (radius + shadow_width - zoomlevel + 1, radius + shadow_width - zoomlevel + 1);
+            base_context.line_to (radius + shadow_width + zoomlevel - 1, radius + shadow_width - zoomlevel + 1);
+            base_context.line_to (radius + shadow_width + zoomlevel - 1, radius + shadow_width + zoomlevel - 1);
+            base_context.line_to (radius + shadow_width - zoomlevel + 1, radius + shadow_width + zoomlevel - 1);
+            base_context.close_path ();
+            base_context.stroke ();
+
+
+            // turn the base surface into a pixbuf and thence a cursor
+            var drawn_pb = Gdk.pixbuf_get_from_surface(base_surface, 0, 0, base_surface.get_width(), base_surface.get_height());
+            var zoom_pb = drawn_pb.scale_simple(
+            snapsize * zoomlevel, snapsize * zoomlevel, Gdk.InterpType.TILES);
+            var magnifier = new Gdk.Cursor.from_pixbuf(
+                get_screen ().get_display (),                
+                zoom_pb,
+                zoom_pb.get_width() / 2, 
+                zoom_pb.get_height () / 2);
+ 
+            // Set the cursor
+            var manager = Gdk.Display.get_default ().get_device_manager ();
+            manager.get_client_pointer ().grab(
+                get_window (),
+                Gdk.GrabOwnership.APPLICATION,
+                true,
+                Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.POINTER_MOTION_MASK | Gdk.EventMask.SCROLL_MASK,
+                magnifier,
+                Gdk.CURRENT_TIME);       
+        }     
+         
+        
+        public Gdk.Pixbuf? snap (int x, int y, int w, int h) {
+            Gdk.Screen screen;
+            int t_x, t_y;
+            Gdk.ModifierType mask;
+            
+            var display=Gdk.Display.get_default();
+            display.get_pointer (out screen, out t_x, out t_y, out mask);
+            
+            var root = Gdk.get_default_root_window ();
+            
+            var screenshot = Gdk.pixbuf_get_from_window (root, x, y, w, h);
+            return screenshot;
         }
 
 
@@ -100,6 +257,8 @@ namespace ColorPicker.Widgets {
 
         public override void show_all () {
             base.show_all ();
+                            
+            
             var manager = Gdk.Display.get_default ().get_device_manager ();
             var pointer = manager.get_client_pointer ();
             var keyboard = pointer.get_associated_device ();
@@ -111,11 +270,14 @@ namespace ColorPicker.Widgets {
                         Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK | Gdk.EventMask.POINTER_MOTION_MASK,
                         new Gdk.Cursor.for_display (window.get_display (), Gdk.CursorType.CROSSHAIR),
                         Gtk.get_current_event_time ());
-
+            
             if (status != Gdk.GrabStatus.SUCCESS) {
                 pointer.ungrab (Gtk.get_current_event_time ());
             }
 
+            // show magnifier
+            set_magnifier_cursor ();
+    
             if (keyboard != null) {
                 status = keyboard.grab (window,
                         Gdk.GrabOwnership.NONE,
@@ -128,36 +290,12 @@ namespace ColorPicker.Widgets {
                     keyboard.ungrab (Gtk.get_current_event_time ());
                 }                
             }
-        }
+        }        
 
         public new void close () {
             get_window ().set_cursor (null);
             base.close ();
         }
-
-        /*
-        public override bool draw (Cairo.Context ctx) {
-            if (!dragging) {
-                return true;
-            }
-
-            int w = get_allocated_width ();
-            int h = get_allocated_height ();
-
-            ctx.rectangle (0, 0, w, h);
-            ctx.set_source_rgba (0.1, 0.1, 0.1, 0.2);
-            ctx.fill ();
-
-            ctx.rectangle (0, 0, w, h);
-            ctx.set_source_rgb (0.7, 0.7, 0.7);
-            ctx.set_line_width (1.0);
-            ctx.stroke ();
-
-            return base.draw (ctx);
-        }
-    */
-
-
 
     }
 

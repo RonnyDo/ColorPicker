@@ -30,7 +30,6 @@ namespace ColorPicker {
                 icon_name: "com.github.ronnydo.colorpicker",
                     title: _("Color Picker"),
                     resizable: false,
-                    //height_request: 500,
                     width_request: 500
             );
         }        
@@ -228,10 +227,14 @@ namespace ColorPicker {
                 
                 this.present ();                    
             });
-                                  
-                		          
+            
+            
             // trigger picker on startup
-            pick_color_button.clicked ();
+            this.show.connect(() => {            
+                pick_color_button.clicked ();
+            });
+                                  
+            
         }
         
         private void update_color_format_combobox_text (Gtk.Entry format_entry, int id) {			
