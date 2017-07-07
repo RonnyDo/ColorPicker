@@ -23,5 +23,10 @@
 	        <summary>Color History</summary>
 	        <description>Color History</description>
         </key>
+        <key name="zoomlevel" type="i">
+            <default>3</default>
+            <summary>Most recent zoomlevel of the picker's magnifier.</summary>
+            <description>Most recent zoomlevel of the picker's magnifier.</description>
+        </key>
     </schema>
 </schemalist>

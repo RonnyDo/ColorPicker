@@ -29,6 +29,7 @@ namespace ColorPicker.Services {
         public int window_y { get; set; }
         public int color_format_index { get; set; }
         public string[] color_history { get; set; }
+        public int zoomlevel { get; set; }
 
         public static Settings get_instance () {
             if (instance == null) {

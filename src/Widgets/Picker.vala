@@ -33,12 +33,11 @@ namespace ColorPicker.Widgets {
 
         const string bright_border_color_string = "#FFFFFF";
         private Gdk.RGBA bright_border_color = Gdk.RGBA();
-
         
-        int snapsize = 35;  // must be odd
-        int zoomlevel = 3;
+        int snapsize = 35;  // must be odd to have a 1px magnifier center
         int min_zoomlevel = 2;
-        int max_zoomlevel = 7;
+        int max_zoomlevel = 7;        
+        int zoomlevel = 3;
 
 
         construct {
@@ -56,6 +55,11 @@ namespace ColorPicker.Widgets {
             
             dark_border_color.parse (dark_border_color_string);            
             bright_border_color.parse (bright_border_color_string);
+            
+            // restore zoomlevel
+            if (settings.zoomlevel >= min_zoomlevel && settings.zoomlevel <= max_zoomlevel) {
+                zoomlevel = settings.zoomlevel;
+            }
 
             var screen = get_screen ();            
             set_default_size (screen.get_width (), screen.get_height ());
@@ -126,12 +130,10 @@ namespace ColorPicker.Widgets {
               
              // Zoom that screenshot up, and grab a snapsize-sized piece from the middle
              var scaled_pb = latest_pb.scale_simple (snapsize * zoomlevel + shadow_width * 2 , snapsize * zoomlevel + shadow_width * 2 , Gdk.InterpType.NEAREST);
-             // var scaled_pb_subset = new Gdk.Pixbuf.subpixbuf(scaled_pb, snapsize / 2 + 1, snapsize / 2 + 1, snapsize, snapsize);
              
              // Create the base surface for our cursor
              var base_surface = new Cairo.ImageSurface (Cairo.Format.ARGB32, snapsize * zoomlevel + shadow_width * 2 , snapsize * zoomlevel + shadow_width * 2);
              var base_context = new Cairo.Context (base_surface);
-             //base_context.scale (zoomlevel, zoomlevel);
              
              // Create the circular path on our base surface
              base_context.arc (radius + shadow_width, radius + shadow_width, radius, 0, 2 * Math.PI);
@@ -293,6 +295,9 @@ namespace ColorPicker.Widgets {
         }        
 
         public new void close () {
+            // save zoomlevel
+            settings.zoomlevel = zoomlevel;
+
             get_window ().set_cursor (null);
             base.close ();
         }
