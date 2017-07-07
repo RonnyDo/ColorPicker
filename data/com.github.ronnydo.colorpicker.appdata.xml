@@ -10,7 +10,7 @@
     <p>One Color Picker to rule them all! No overhelming menus or settings. An easy tool with the features you need.</p>
     <p>Features:</p>
      <ul>
-       <li>Pick a color</li>
+       <li>Pick a color with the zoomable Magnifier</li>
        <li>Choose between multiple Color Formats</li>
        <li>Let the Color History remember your last colors</li>
     </ul>
@@ -22,6 +22,17 @@
 	<category>Development</category>
   </categories>
   <releases>
+	​<release version="1.0.0" date="2017-07-07" urgency="medium">
+	​  <description>
+	    <ul>
+		  <li>Main Release!</li>
+		  <li>Implement magnifier (issue #12)</li>
+		  <li>Use your mousewheel to zoom the magnifier in and out.</li>
+		  <li>Invalid AppData file (issue #17)</li>
+		  <li>Code cleanup</li>
+		</ul>
+	  </description>
+	​</release>
 	​<release version="0.9.5" date="2017-06-27" urgency="medium">
 	​  <description>
 	    <ul>

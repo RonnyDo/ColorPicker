@@ -1,3 +1,13 @@
+om.github.ronnydo.colorpicker (1.0.0) xenial; urgency=medium
+
+  * Main Release!
+  * Implement magnifier (issue #12)
+  * Use your mousewheel to zoom the magnifier in and out.
+  * Invalid AppData file (issue #17)
+  * Code cleanup
+  
+ -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 07 Jul 2017 12:00:00 +0100
+
 com.github.ronnydo.colorpicker (0.9.5) xenial; urgency=medium
 
   * Fix issue #13
