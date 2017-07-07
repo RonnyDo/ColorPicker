@@ -3,7 +3,7 @@
 One Color Picker to rule them all! No overhelming menus or settings. An easy tool with the features you need.
 
 Features:
-* Pick a color
+* Pick a color with the zoomable Magnifier
 * Choose between multiple Color Formats
 * Let the Color History remember your last colors
 
