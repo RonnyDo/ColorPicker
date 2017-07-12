@@ -1,4 +1,10 @@
-om.github.ronnydo.colorpicker (1.0.0) xenial; urgency=medium
+com.github.ronnydo.colorpicker (1.0.1) xenial; urgency=medium
+
+  * Improvements to avoid issue #19
+  
+ -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 13 Jul 2017 01:45:00 +0100
+
+com.github.ronnydo.colorpicker (1.0.0) xenial; urgency=medium
 
   * Main Release!
   * Implement magnifier (issue #12)
