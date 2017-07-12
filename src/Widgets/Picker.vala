@@ -36,10 +36,10 @@ namespace ColorPicker.Widgets {
         
         int snapsize = 35;  // must be odd to have a 1px magnifier center
         int min_zoomlevel = 2;
-        int max_zoomlevel = 7;        
+        int max_zoomlevel = 9;        
         int zoomlevel = 3;
-
-
+        
+        
         construct {
             type = Gtk.WindowType.POPUP;
         }
@@ -125,8 +125,7 @@ namespace ColorPicker.Widgets {
              var radius = snapsize * zoomlevel / 2;
              
              // take screenshot
-             var latest_pb = snap (px - snapsize / 2, py - snapsize / 2, 
-                  snapsize, snapsize);
+             var latest_pb = snap (px - snapsize / 2, py - snapsize / 2, snapsize, snapsize);
               
              // Zoom that screenshot up, and grab a snapsize-sized piece from the middle
              var scaled_pb = latest_pb.scale_simple (snapsize * zoomlevel + shadow_width * 2 , snapsize * zoomlevel + shadow_width * 2 , Gdk.InterpType.NEAREST);
@@ -190,10 +189,15 @@ namespace ColorPicker.Widgets {
             // turn the base surface into a pixbuf and thence a cursor
             var drawn_pb = Gdk.pixbuf_get_from_surface(base_surface, 0, 0, base_surface.get_width(), base_surface.get_height());
             var zoom_pb = drawn_pb.scale_simple(
-            snapsize * zoomlevel, snapsize * zoomlevel, Gdk.InterpType.TILES);
+                snapsize * zoomlevel, snapsize * zoomlevel, Gdk.InterpType.TILES);
+                
+            print ("drawn_pb width: " + drawn_pb.get_width().to_string () + "\n");
+            print ("zoom_pb width: " + zoom_pb.get_width().to_string ()  + "\n");
+            print ("radius is: " + radius.to_string ()  + "\n");
+            
             var magnifier = new Gdk.Cursor.from_pixbuf(
                 get_screen ().get_display (),                
-                zoom_pb,
+                drawn_pb,
                 zoom_pb.get_width() / 2, 
                 zoom_pb.get_height () / 2);
  
@@ -210,13 +214,6 @@ namespace ColorPicker.Widgets {
          
         
         public Gdk.Pixbuf? snap (int x, int y, int w, int h) {
-            Gdk.Screen screen;
-            int t_x, t_y;
-            Gdk.ModifierType mask;
-            
-            var display=Gdk.Display.get_default();
-            display.get_pointer (out screen, out t_x, out t_y, out mask);
-            
             var root = Gdk.get_default_root_window ();
             
             var screenshot = Gdk.pixbuf_get_from_window (root, x, y, w, h);
@@ -233,8 +230,8 @@ namespace ColorPicker.Widgets {
         }
 
         public Gdk.RGBA get_color_at (int x, int y) {
-            Gdk.Window win = Gdk.get_default_root_window ();
-            Gdk.Pixbuf? pixbuf = Gdk.pixbuf_get_from_window (win, x, y, 1, 1);
+            var root = Gdk.get_default_root_window ();
+            Gdk.Pixbuf? pixbuf = Gdk.pixbuf_get_from_window (root, x, y, 1, 1);
 
             if (pixbuf != null) {                
                 // see https://hackage.haskell.org/package/gtk3-0.14.6/docs/Graphics-UI-Gtk-Gdk-Pixbuf.html
