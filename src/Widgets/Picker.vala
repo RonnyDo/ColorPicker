@@ -34,12 +34,21 @@ namespace ColorPicker.Widgets {
         const string bright_border_color_string = "#FFFFFF";
         private Gdk.RGBA bright_border_color = Gdk.RGBA();
         
-        int snapsize = 35;  // must be odd to have a 1px magnifier center
+        // 1. Snapsize is the amount of pixel going to be magnified by the zoomlevel.
+        // 2. The snapsize must be odd to have a 1px magnifier center.
+        // 3. Asure that snapsize*max_zoomlevel+shadow_width*2 is smaller than 2 * get_screen ().get_display ().get_maximal_cursor_size()
+        //    Valid: snapsize = 31, max_zoomlevel = 7, shadow_width = 15 --> 247px
+        //           get_maximal_cursor_size = 128 --> 256px
+        //    Otherwise the cursor starts to flicker. See https://github.com/stuartlangridge/ColourPicker/issues/6#issuecomment-277972290
+        //    and https://github.com/RonnyDo/ColorPicker/issues/19
+        int snapsize = 31;
         int min_zoomlevel = 2;
-        int max_zoomlevel = 9;        
+        int max_zoomlevel = 7;        
         int zoomlevel = 3;
+        int shadow_width = 15;
         
-        
+        private Gdk.Cursor magnifier = null;
+                
         construct {
             type = Gtk.WindowType.POPUP;
         }
@@ -51,7 +60,8 @@ namespace ColorPicker.Widgets {
             set_deletable (false);
             set_skip_taskbar_hint (true);
             set_skip_pager_hint (true);
-            set_keep_above (true);
+            set_keep_above (true);            
+            
             
             dark_border_color.parse (dark_border_color_string);            
             bright_border_color.parse (bright_border_color_string);
@@ -78,13 +88,12 @@ namespace ColorPicker.Widgets {
         }
         
        
-       public override bool draw (Cairo.Context cr) {
-           
+       public override bool draw (Cairo.Context cr) {           
            return false;
        }
 
 
-        public override bool motion_notify_event (Gdk.EventMotion e) {
+        public override bool motion_notify_event (Gdk.EventMotion e) {        
             Gdk.RGBA color = get_color_at ((int) e.x_root, (int) e.y_root);
             moved (color);
             
@@ -121,18 +130,20 @@ namespace ColorPicker.Widgets {
              int px, py;
              get_pointer (out px, out py);
 
-             int shadow_width = 15;
              var radius = snapsize * zoomlevel / 2;
              
              // take screenshot
+             
              var latest_pb = snap (px - snapsize / 2, py - snapsize / 2, snapsize, snapsize);
               
              // Zoom that screenshot up, and grab a snapsize-sized piece from the middle
              var scaled_pb = latest_pb.scale_simple (snapsize * zoomlevel + shadow_width * 2 , snapsize * zoomlevel + shadow_width * 2 , Gdk.InterpType.NEAREST);
              
+             
              // Create the base surface for our cursor
              var base_surface = new Cairo.ImageSurface (Cairo.Format.ARGB32, snapsize * zoomlevel + shadow_width * 2 , snapsize * zoomlevel + shadow_width * 2);
              var base_context = new Cairo.Context (base_surface);
+             
              
              // Create the circular path on our base surface
              base_context.arc (radius + shadow_width, radius + shadow_width, radius, 0, 2 * Math.PI);
@@ -145,9 +156,9 @@ namespace ColorPicker.Widgets {
              base_context.clip_preserve ();
              base_context.paint ();   
              base_context.restore ();
+            
  
- 
-             // Draw a shadow as outside magnifier border             
+             // Draw a shadow as outside magnifier border
              double shadow_alpha = 0.6;       
              base_context.set_line_width (1);
              
@@ -158,7 +169,8 @@ namespace ColorPicker.Widgets {
                  shadow_color.alpha = shadow_alpha / ((shadow_width - i + 1)*(shadow_width - i + 1));   
                  Gdk.cairo_set_source_rgba (base_context, shadow_color); 
                  base_context.stroke ();
-             }     
+             }
+             
         
             // Draw an outside bright magnifier border  
             Gdk.cairo_set_source_rgba (base_context, bright_border_color);
@@ -188,35 +200,38 @@ namespace ColorPicker.Widgets {
 
             // turn the base surface into a pixbuf and thence a cursor
             var drawn_pb = Gdk.pixbuf_get_from_surface(base_surface, 0, 0, base_surface.get_width(), base_surface.get_height());
-            var zoom_pb = drawn_pb.scale_simple(
-                snapsize * zoomlevel, snapsize * zoomlevel, Gdk.InterpType.TILES);
-                
-            print ("drawn_pb width: " + drawn_pb.get_width().to_string () + "\n");
-            print ("zoom_pb width: " + zoom_pb.get_width().to_string ()  + "\n");
-            print ("radius is: " + radius.to_string ()  + "\n");
             
-            var magnifier = new Gdk.Cursor.from_pixbuf(
+            magnifier = new Gdk.Cursor.from_pixbuf(
                 get_screen ().get_display (),                
                 drawn_pb,
-                zoom_pb.get_width() / 2, 
-                zoom_pb.get_height () / 2);
- 
-            // Set the cursor
+                drawn_pb.get_width () / 2, 
+                drawn_pb.get_height () / 2);
+            
+            /*
+            uint max_cursor_width, max_cursor_height, default_cursor_width, default_cursor_height;;
+            get_screen ().get_display ().get_maximal_cursor_size (out max_cursor_width, out max_cursor_height);
+            print ("\n\nCursor size is " + drawn_pb.get_width().to_string () + "x" + drawn_pb.get_height().to_string ());
+            print ("\nAllowed size is " + max_cursor_width.to_string () + "x" + max_cursor_height.to_string ());    
+            print ("\nDefault size is " + get_screen ().get_display ().get_default_cursor_size ().to_string ());          
+            */
+                
+            // Set the cursor            
             var manager = Gdk.Display.get_default ().get_device_manager ();
-            manager.get_client_pointer ().grab(
+            manager.get_client_pointer ().grab (
                 get_window (),
                 Gdk.GrabOwnership.APPLICATION,
                 true,
                 Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.POINTER_MOTION_MASK | Gdk.EventMask.SCROLL_MASK,
                 magnifier,
-                Gdk.CURRENT_TIME);       
+                Gdk.CURRENT_TIME);      
+                                      
         }     
          
         
         public Gdk.Pixbuf? snap (int x, int y, int w, int h) {
             var root = Gdk.get_default_root_window ();
             
-            var screenshot = Gdk.pixbuf_get_from_window (root, x, y, w, h);
+            var screenshot = Gdk.pixbuf_get_from_window (root, x, y, w, h);                
             return screenshot;
         }
 
@@ -255,8 +270,7 @@ namespace ColorPicker.Widgets {
 
 
         public override void show_all () {
-            base.show_all ();
-                            
+            base.show_all ();                            
             
             var manager = Gdk.Display.get_default ().get_device_manager ();
             var pointer = manager.get_client_pointer ();
