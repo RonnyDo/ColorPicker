@@ -87,19 +87,29 @@ namespace ColorPicker.Widgets {
         } 
         
         public void add_color (Gdk.RGBA color) {
-            if (color_list.size >= max_colors) {
-                remove_oldest_color ();
-            }
+            int c_index = get_index_of (color);
+            
+            if (c_index < 0) {
+                if (color_list.size >= max_colors) {
+                    color_list.remove_at (0);
+                }
+            } else {
+              color_list.remove_at (c_index);
+            }  
+
             color_list.add (color);
             store_colors ();
-            
             selected_color = get_color_list ().size - 1;
         }
         
-        public void remove_oldest_color () {
-            color_list.remove_at (0);
-            store_colors ();
-        }
+        public int get_index_of (Gdk.RGBA color) {
+            for (int i = 0; i < color_list.size; i++) {
+                if (color_list[i] == color) {
+                    return i;
+                }
+            }
+            return -1;
+        }              
         
         public Gee.ArrayList<Gdk.RGBA?> get_color_list () {
             return color_list;
