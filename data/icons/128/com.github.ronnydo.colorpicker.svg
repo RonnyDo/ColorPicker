@@ -38,13 +38,13 @@
      inkscape:window-height="739"
      id="namedview54"
      showgrid="false"
-     inkscape:zoom="4"
-     inkscape:cx="-8.482734"
-     inkscape:cy="73.759282"
+     inkscape:zoom="4.515625"
+     inkscape:cx="64"
+     inkscape:cy="64"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g3965"
+     inkscape:current-layer="svg2"
      inkscape:object-nodes="true" />
   <defs
      id="defs4">
@@ -247,12 +247,37 @@
          style="stop-color:#ffffff;stop-opacity:0.39215687"
          offset="1" />
     </linearGradient>
+    <radialGradient
+       xlink:href="#linearGradient3820-7-2-8-6"
+       id="radialGradient3163"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.6869404,0,0,0.21461693,-3.9963115,68.57334)"
+       cx="99.157013"
+       cy="186.17059"
+       fx="99.157013"
+       fy="186.17059"
+       r="62.769119" />
+    <linearGradient
+       id="linearGradient3820-7-2-8-6">
+      <stop
+         id="stop3822-2-6-5-0"
+         style="stop-color:#3d3d3d;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop3864-8-7-4-1"
+         style="stop-color:#686868;stop-opacity:0.49803922"
+         offset="0.5" />
+      <stop
+         id="stop3824-1-2-6-7"
+         style="stop-color:#686868;stop-opacity:0"
+         offset="1" />
+    </linearGradient>
   </defs>
   <path
      inkscape:connector-curvature="0"
-     style="fill:url(#a)"
-     id="path38"
-     d="m 107.21449,108.53111 a 43.119224,13.472132 0 1 1 -86.238443,0 43.119224,13.472132 0 1 1 86.238443,0 z" />
+     style="fill:url(#radialGradient3163);fill-opacity:1;stroke:none"
+     id="path3818-0-5-0"
+     d="m 107.23729,108.52869 a 43.118644,13.471312 0 0 1 -86.237288,0 43.118644,13.471312 0 1 1 86.237288,0 z" />
   <g
      id="g3965"
      transform="translate(123.85706,8.8060501)">
