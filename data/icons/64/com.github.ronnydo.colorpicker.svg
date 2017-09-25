@@ -38,8 +38,8 @@
      inkscape:window-height="739"
      id="namedview54"
      showgrid="false"
-     inkscape:zoom="9.03125"
-     inkscape:cx="20.731232"
+     inkscape:zoom="1"
+     inkscape:cx="3.6239656"
      inkscape:cy="30.782007"
      inkscape:window-x="0"
      inkscape:window-y="30"
@@ -250,12 +250,52 @@
          style="stop-color:#ffffff;stop-opacity:0.39215687"
          offset="1" />
     </linearGradient>
+    <radialGradient
+       xlink:href="#linearGradient23419"
+       id="radialGradient3300-9"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.3823536,7.5555777e-8,-1.8372241e-8,0.1115198,-5.9254271,36.335849)"
+       cx="99.189415"
+       cy="185.29727"
+       fx="99.189415"
+       fy="185.29727"
+       r="62.769119" />
+    <linearGradient
+       id="linearGradient23419">
+      <stop
+         id="stop23421"
+         style="stop-color:#000000;stop-opacity:1"
+         offset="0" />
+      <stop
+         id="stop23423"
+         style="stop-color:#000000;stop-opacity:0"
+         offset="1" />
+    </linearGradient>
+    <radialGradient
+       xlink:href="#linearGradient23419"
+       id="radialGradient4192"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.2549024,5.3967361e-8,-1.2248161e-8,0.07965545,6.7163816,44.240666)"
+       cx="99.189415"
+       cy="185.29727"
+       fx="99.189415"
+       fy="185.29727"
+       r="62.769119" />
   </defs>
-  <path
-     d="m161.93 186.17a62.769 10.462 0 1 1 -125.54 0 62.769 10.462 0 1 1 125.54 0z"
-     transform="matrix(.38235 0 0 .71691 -5.913 -76.968)"
-     fill="url(#b)"
-     id="path36" />
+  <g
+     transform="translate(1.55e-6,-0.00183192)"
+     id="g4198">
+    <path
+       inkscape:connector-curvature="0"
+       d="m 55.999998,57.0017 a 24,6.9985714 0 1 1 -47.9999991,0 24,6.9985714 0 1 1 47.9999991,0 z"
+       id="path3818-0"
+       style="opacity:0.2;fill:url(#radialGradient3300-9);fill-opacity:1;stroke:none" />
+    <path
+       inkscape:connector-curvature="0"
+       style="opacity:0.4;fill:url(#radialGradient4192);fill-opacity:1;stroke:none"
+       id="path4190"
+       d="m 47.999998,59.0017 a 16,4.9988822 0 1 1 -31.999999,0 16,4.9988822 0 1 1 31.999999,0 z" />
+  </g>
   <g
      transform="matrix(1.4366007,0,0,1.4305936,-2.4784391,-2.1111639)"
      id="g4220">
