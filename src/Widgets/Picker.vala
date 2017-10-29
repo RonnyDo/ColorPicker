@@ -77,12 +77,12 @@ namespace ColorPicker.Widgets {
 
         
         public override bool button_release_event (Gdk.EventButton e) {
-            if (e.button != 1) {
-                return true;
+            if (e.button == 1) {
+                Gdk.RGBA color = get_color_at ((int) e.x_root, (int) e.y_root);
+                picked (color);
+            } else if (e.button == 3) {
+                cancelled ();
             }
-
-            Gdk.RGBA color = get_color_at ((int) e.x_root, (int) e.y_root);
-            picked (color);
 
             return true;            
         }

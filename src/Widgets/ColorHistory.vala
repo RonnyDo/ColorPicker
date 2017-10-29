@@ -144,7 +144,7 @@ namespace ColorPicker.Widgets {
             // simple shade
             ctx.new_path ();
             ctx.move_to (border_width, border_width);
-            ctx.rel_line_to (width - (border_width) * 2, 0);
+            ctx.rel_line_to (width - border_width * 2, 0);
             Gdk.RGBA s = Gdk.RGBA();
             //s.parse("rgba(255, 255, 255, 0.8)");
             s.parse("rgba(33, 33, 33, 0.2)");  
