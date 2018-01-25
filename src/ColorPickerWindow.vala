@@ -74,7 +74,7 @@ namespace ColorPicker {
             
             var format_entry = new Gtk.Entry ();
             format_entry.placeholder_text = ext_active_color.to_css_rgb_string ();
-            format_entry.set_editable (false);
+            format_entry.set_editable (true);
             format_entry.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-copy");     
             format_entry.margin_end = 6;
             
@@ -233,7 +233,21 @@ namespace ColorPicker {
             this.show.connect(() => {            
                 pick_color_button.clicked ();
             });
-                                  
+                           
+            format_entry.activate.connect (() => {
+                var color_string = format_entry.get_text ();
+                if (ext_active_color.parse (color_string)) {
+                    color_area.set_color (ext_active_color);
+                    color_area.queue_draw ();
+                                   
+                    hex_label.set_markup (ext_active_color.to_uppercase_hex_string ());
+
+                    color_history.add_color (ext_active_color);
+                                
+                    this.present ();
+                }
+                
+            });
             
         }
         
