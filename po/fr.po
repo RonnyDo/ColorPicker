@@ -1,0 +1,32 @@
+# French translations for com.github.ronnydo.colorpicker package.
+# Copyright (C) 2017 THE com.github.ronnydo.colorpicker'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.ronnydo.colorpicker package.
+# Ronny Dobra <ronnydobra at arcor dot de>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.ronnydo.colorpicker\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-10 21:48-0200\n"
+"PO-Revision-Date: 2018-04-10 21:48-0200\n"
+"Last-Translator: Arthur Soulié <arthur.soulie@tuta.io>\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Color Picker"
+msgstr "Color Picker"
+
+
+msgid "Pick Color"
+msgstr "Sélectionnez une Couleur"
+
+
+msgid "Format"
+msgstr "Format"
+
+msgid "Color History"
+msgstr "Historique des Couleurs"
