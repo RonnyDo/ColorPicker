@@ -22,6 +22,13 @@
 	<category>Development</category>
   </categories>
   <releases>
+	​<release version="1.0.3" date="2018-04-26" urgency="medium">
+	​  <description>
+	    <ul>
+		  <li>Language updates</li>
+		</ul>
+	  </description>
+	​</release>
   	​<release version="1.0.2" date="2017-08-20" urgency="medium">
   	​  <description>
   	    <ul>

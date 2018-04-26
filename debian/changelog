@@ -1,4 +1,10 @@
-com.github.ronnydo.colorpicker (1.0.1) xenial; urgency=medium
+com.github.ronnydo.colorpicker (1.0.3) xenial; urgency=low
+
+  * Language updates
+  
+ -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 26 Apr 2017 13:31:00 +0100
+ 
+com.github.ronnydo.colorpicker (1.0.2) xenial; urgency=medium
 
   * Implement "Don't add the same color to color history twice" (issue #24)
   
