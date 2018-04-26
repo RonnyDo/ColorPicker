@@ -1,4 +1,4 @@
-com.github.ronnydo.colorpicker (1.0.3) xenial; urgency=low
+com.github.ronnydo.colorpicker (1.0.4) xenial; urgency=low
 
   * Implement 'close with right-mouse-button' feature (issue #27)
   * Update icon

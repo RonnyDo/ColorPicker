@@ -22,7 +22,7 @@
 	<category>Development</category>
   </categories>
   <releases>
-	​<release version="1.0.3" date="2018-04-26" urgency="medium">
+	​<release version="1.0.4" date="2018-04-26" urgency="medium">
 	​  <description>
 	    <ul>
 		  <li>Implement 'close with right-mouse-button' feature (issue #27)</li>
