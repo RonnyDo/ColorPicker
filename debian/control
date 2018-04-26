@@ -5,7 +5,7 @@ Maintainer: Ronny Dobra <ronnydobra at arcor dot de>
 Build-Depends: debhelper (>= 9),
                libgranite-dev,
                libgtk-3-dev,
-               meson
+               meson,
                valac
                
 Standards-Version: 3.9.3

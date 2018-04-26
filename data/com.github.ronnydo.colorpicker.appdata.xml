@@ -25,7 +25,9 @@
 	​<release version="1.0.3" date="2018-04-26" urgency="medium">
 	​  <description>
 	    <ul>
-		  <li>Language updates</li>
+		  <li>Implement 'close with right-mouse-button' feature (issue #27)</li>
+		  <li>Update icon</li>
+		  <li>Add French, Spanish and Catalan translation</li>
 		</ul>
 	  </description>
 	​</release>

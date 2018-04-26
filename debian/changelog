@@ -1,6 +1,8 @@
 com.github.ronnydo.colorpicker (1.0.3) xenial; urgency=low
 
-  * Language updates
+  * Implement 'close with right-mouse-button' feature (issue #27)
+  * Update icon
+  * Add French, Spanish and Catalan translation
   
  -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 26 Apr 2017 13:31:00 +0100
  
