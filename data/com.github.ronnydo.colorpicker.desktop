@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Color Picker
 Comment=An intuitive Color Picker
+Comment[fr]=Un Sélecteur de Couleurs intuitifs
 Exec=com.github.ronnydo.colorpicker
 Icon=com.github.ronnydo.colorpicker
 Keywords=colorpicker;color;picker;selector;pipette;
