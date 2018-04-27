@@ -22,7 +22,23 @@
 	<category>Development</category>
   </categories>
   <releases>
-	​<release version="1.0.3" date="2018-04-27" urgency="medium">
+  	​<release version="1.0.5" date="2018-04-27" urgency="medium">
+  	​  <description>
+  	    <ul>
+  		  <li>Implement 'close with right-mouse-button' feature (issue #27)</li>
+  		  <li>Update icon</li>
+  		  <li>Add French, Spanish and Catalan translation</li>
+  		</ul>
+  	  </description>
+  	​</release>
+	​<release version="1.0.4" date="2018-04-27" urgency="medium">
+	​  <description>
+	    <ul>
+		  <li>fix version conflict</li>
+		</ul>
+	  </description>
+	​</release>
+	​<release version="1.0.3" date="2018-04-26" urgency="medium">
 	​  <description>
 	    <ul>
 		  <li>Implement 'close with right-mouse-button' feature (issue #27)</li>
