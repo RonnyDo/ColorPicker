@@ -34,6 +34,9 @@ namespace ColorPicker.Widgets {
         const string bright_border_color_string = "#FFFFFF";
         private Gdk.RGBA bright_border_color = Gdk.RGBA();
         
+        private int mouse_pos_x = 0;        
+        private int mouse_pos_y = 0;
+        
         // 1. Snapsize is the amount of pixel going to be magnified by the zoomlevel.
         // 2. The snapsize must be odd to have a 1px magnifier center.
         // 3. Asure that snapsize*max_zoomlevel+shadow_width*2 is smaller than 2 * get_screen ().get_display ().get_maximal_cursor_size()
@@ -77,9 +80,11 @@ namespace ColorPicker.Widgets {
 
         
         public override bool button_release_event (Gdk.EventButton e) {
+            // button_1 is left mouse button
             if (e.button == 1) {
                 Gdk.RGBA color = get_color_at ((int) e.x_root, (int) e.y_root);
                 picked (color);
+            // button_3 is right mouse button
             } else if (e.button == 3) {
                 cancelled ();
             }
@@ -93,8 +98,9 @@ namespace ColorPicker.Widgets {
        }
 
 
-        public override bool motion_notify_event (Gdk.EventMotion e) {        
+        public override bool motion_notify_event (Gdk.EventMotion e) {  
             Gdk.RGBA color = get_color_at ((int) e.x_root, (int) e.y_root);
+            
             moved (color);
             
             set_magnifier_cursor ();
@@ -237,10 +243,32 @@ namespace ColorPicker.Widgets {
 
 
         public override bool key_press_event (Gdk.EventKey e) {
-            if (e.keyval == Gdk.Key.Escape) {
-                cancelled ();
+            int px, py;
+            get_pointer (out px, out py);
+            var manager = Gdk.Display.get_default ().get_device_manager ();
+                            
+            switch (e.keyval) {
+                case Gdk.Key.Escape:
+                    cancelled ();
+                    break;
+                case Gdk.Key.Return:
+                    Gdk.RGBA color = get_color_at (px, py);
+                    picked (color);
+                    break;
+                case Gdk.Key.Up:
+                    manager.get_client_pointer ().warp (get_screen (), px, py - 1);
+                    break;
+                case Gdk.Key.Down:
+                    manager.get_client_pointer ().warp (get_screen (), px, py + 1);
+                    break;
+                case Gdk.Key.Left:
+                    manager.get_client_pointer ().warp (get_screen (), px - 1, py);
+                    break;
+                case Gdk.Key.Right:
+                    manager.get_client_pointer ().warp (get_screen (), px + 1, py);
+                    break;
             }
-
+           
             return true;            
         }
 

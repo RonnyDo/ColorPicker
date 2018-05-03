@@ -85,7 +85,7 @@ namespace ColorPicker {
             color_format_combobox.append_text ("rgba");
             color_format_combobox.append_text ("Gdk RGBA");
             color_format_combobox.append_text ("Qt rgba");
-            color_format_combobox.active = settings.color_format_index;
+            color_format_combobox.active =  settings.color_format_index;
             
             var adjust_button = new Gtk.Button.from_icon_name ("media-eq-symbolic");
             adjust_button.margin_start = 12;
