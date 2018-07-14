@@ -30,7 +30,7 @@ You'll need the following dependencies to build:
 Call in the project's root folder:
 
     meson build && cd build
-    mesonconf -Dprefix=/usr
+    meson configure -Dprefix=/usr
     ninja
     sudo ninja install
     com.github.ronnydo.colorpicker
