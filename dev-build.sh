@@ -1,7 +1,7 @@
 sudo rm -r build
 meson build
 cd build
-mesonconf -Dprefix=/usr
+meson configure -Dprefix=/usr
 ninja
 ./com.github.ronnydo.colorpicker
 cd ..
