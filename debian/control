@@ -1,7 +1,7 @@
 Source: com.github.ronnydo.colorpicker
 Section: x11
 Priority: extra
-Maintainer: Ronny Dobra <ronnydobra at arcor dot de>
+Maintainer: Ronny Dobra <ronnydobra@arcor.de>
 Build-Depends: debhelper (>= 9),
                libgranite-dev,
                libgtk-3-dev,
