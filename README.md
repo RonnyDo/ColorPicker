@@ -27,11 +27,5 @@ You'll need the following dependencies to build:
 * valac
 
 ## Build, Install and Run
-Call in the project's root folder:
-
-    meson build && cd build
-    mesonconf -Dprefix=/usr
-    ninja
-    sudo ninja install
-    com.github.ronnydo.colorpicker
+If you like to build it by your own, have a look into the dev-build.sh file.
 

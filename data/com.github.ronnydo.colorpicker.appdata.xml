@@ -22,6 +22,14 @@
 	<category>Development</category>
   </categories>
   <releases>
+  	​<release version="1.1.0" date="2019-01-02" urgency="medium">
+  	​  <description>
+  	    <ul>
+  		  <li>Juno Release!!1! (finally)</li>
+  		  <li>"Olá em português" (Translation by @drom98)</li>
+  		</ul>
+  	  </description>
+  	​</release>
   	​<release version="1.0.5" date="2018-04-27" urgency="medium">
   	​  <description>
   	    <ul>
