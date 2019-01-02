@@ -1,9 +1,9 @@
-com.github.ronnydo.colorpicker (1.1.0) bionic; urgency=medium
+com.github.ronnydo.colorpicker (1.1.1) bionic; urgency=medium
 
   * Juno Release!!1! (finally)
   * "Olá em português" (Translation by @drom98)
   
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 02 Jan 2019 20:31:00 +0100
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 02 Jan 2019 20:31:00 +0100
 
 com.github.ronnydo.colorpicker (1.0.5) xenial; urgency=medium
 
@@ -11,13 +11,13 @@ com.github.ronnydo.colorpicker (1.0.5) xenial; urgency=medium
   * Update icon
   * Add French, Spanish and Catalan translation
   
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 27 Apr 2018 18:31:00 +0100
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 27 Apr 2018 18:31:00 +0100
  
 com.github.ronnydo.colorpicker (1.0.4) xenial; urgency=medium
 
   * fix version conflicts
   
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 27 Apr 2018 13:31:00 +0100
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 27 Apr 2018 13:31:00 +0100
  
 com.github.ronnydo.colorpicker (1.0.3) xenial; urgency=medium
 
@@ -25,19 +25,19 @@ com.github.ronnydo.colorpicker (1.0.3) xenial; urgency=medium
   * Update icon
   * Add French, Spanish and Catalan translation
   
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 26 Apr 2018 13:31:00 +0100
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 26 Apr 2018 13:31:00 +0100
  
 com.github.ronnydo.colorpicker (1.0.2) xenial; urgency=medium
 
   * Implement "Don't add the same color to color history twice" (issue #24)
   
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 20 Aug 2017 13:30:00 +0100
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 20 Aug 2017 13:30:00 +0100
 
 com.github.ronnydo.colorpicker (1.0.1) xenial; urgency=medium
 
   * Improvements to avoid issue #19
   
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 13 Jul 2017 01:45:00 +0100
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 13 Jul 2017 01:45:00 +0100
 
 com.github.ronnydo.colorpicker (1.0.0) xenial; urgency=medium
 
@@ -47,38 +47,38 @@ com.github.ronnydo.colorpicker (1.0.0) xenial; urgency=medium
   * Invalid AppData file (issue #17)
   * Code cleanup
   
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 07 Jul 2017 12:00:00 +0100
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 07 Jul 2017 12:00:00 +0100
 
 com.github.ronnydo.colorpicker (0.9.5) xenial; urgency=medium
 
   * Fix issue #13
   
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 27 Jun 2017 23:20:00 +0100
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 27 Jun 2017 23:20:00 +0100
 
 com.github.ronnydo.colorpicker (0.9.4) xenial; urgency=medium
 
   * Fix issue #16
   
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 26 Jun 2017 23:10:00 +0100
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 26 Jun 2017 23:10:00 +0100
 
 com.github.ronnydo.colorpicker (0.9.3) xenial; urgency=medium
 
   * Color Picker now restores your recent window position, color format and color history! (issue #10, issue #11 and issue #15)
   * Minor icon changes
   
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 26 Jun 2017 22:45:00 +0100
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 26 Jun 2017 22:45:00 +0100
 
 com.github.ronnydo.colorpicker (0.9.2) xenial; urgency=medium
 
   * Fix issue #9
   
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 23 Jun 2017 17:15:00 +0100
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 23 Jun 2017 17:15:00 +0100
 
 com.github.ronnydo.colorpicker (0.9.1) xenial; urgency=medium
 
   * Fix issue #8
   
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 23 Jun 2017 09:45:00 +0100
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 23 Jun 2017 09:45:00 +0100
 
 com.github.ronnydo.colorpicker (0.9.0) xenial; urgency=medium
 
@@ -90,28 +90,28 @@ com.github.ronnydo.colorpicker (0.9.0) xenial; urgency=medium
   * Update icons
   * Add German translation
 
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 22 Jun 2017 23:02:00 +0100
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 22 Jun 2017 23:02:00 +0100
 
 com.github.ronnydo.colorpicker (0.1.2) xenial; urgency=low
 
   * Fix build information
 
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 21 Jun 2017 19:22:00 +0100
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 21 Jun 2017 19:22:00 +0100
  
 com.github.ronnydo.colorpicker (0.1.1) xenial; urgency=low
 
   * Added debian files and logo files
 
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 19 Jun 2017 00:44:00 +0100
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 19 Jun 2017 00:44:00 +0100
   
 com.github.ronnydo.colorpicker (0.1.0) xenial; urgency=low
 
   * First official release
 
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 15 Jun 2017 13:21:00 +0100
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 15 Jun 2017 13:21:00 +0100
  
 com.github.ronnydo.colorpicker (0.0.1) xenial; urgency=low
 
   * Release Test
 
- -- Ronny Dobra <ronnydobra at arcor dot de>  Thu, 15 Jun 2017 12:59:00 +0100
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 15 Jun 2017 12:59:00 +0100
