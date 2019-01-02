@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2017 Ronny Dobra <ronnydobra at arcor dot de> -->
 <component type="desktop">
-  <id>com.github.ronnydo.colorpicker.desktop</id>
+  <id>com.github.ronnydo.colorpicker</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <name>Color Picker</name>
