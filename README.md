@@ -17,15 +17,28 @@ On elementaryOS? Simply install Color Picker from AppCenter:
   </a>
 </p>
 
-Otherwise you can download and install the [latest .deb file](https://github.com/ronnydo/colorpicker/releases/latest).
+For other Debian-based systems, you can download and install the [latest .deb file](https://github.com/ronnydo/colorpicker/releases/latest).
 
-## Dependencies
-You'll need the following dependencies to build:
+For other systems, you will need to compile the package yourself. See the instructions below.
+
+## Build from source
+If you like to build ColorPicker yourself, take a look at the [`dev-build.sh`](dev-build.sh) file.
+
+### Dependencies
+You'll need the following dependencies to compile ColorPicker:
 * granite
 * libgtk-3-dev
 * meson
 * valac
 
-## Build, Install and Run
-If you like to build it by your own, have a look into the dev-build.sh file.
+### Example
 
+Here's a sample list of commands for building the package from source. These have been tested to work correctly on Ubuntu 18.04.
+
+```sh
+sudo apt install valac libgranite-dev
+git clone https://github.com/RonnyDo/ColorPicker.git
+cd ColorPicker/
+chmod +x dev-build.sh
+./dev-build.sh
+```
