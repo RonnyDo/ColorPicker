@@ -1,7 +1,7 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Portuguese translation for ColorPicker.
+# Copyright (C) 2019 The ColorPicker contributors
 # This file is distributed under the same license as the com.github.danrabbit.nimbus package.
-# Diogo Oliveira <https://github.com/drom98>, YEAR.
+# Diogo Oliveira <https://github.com/drom98>, 2018.
 #
 #, fuzzy
 
@@ -21,13 +21,11 @@ msgstr ""
 msgid "Color Picker"
 msgstr "Color Picker"
 
-
 msgid "Pick Color"
-msgstr "Selecionar Cor"
-
+msgstr "Selecionar cor"
 
 msgid "Format"
 msgstr "Formato"
 
 msgid "Color History"
-msgstr "Histórico de Cores"
+msgstr "Histórico de cores"
