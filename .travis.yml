@@ -26,4 +26,3 @@ install:
 
 script:
   - houston ci
-    --name-human Color Picker
