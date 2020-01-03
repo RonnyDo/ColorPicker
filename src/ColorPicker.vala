@@ -45,9 +45,11 @@ namespace ColorPicker {
             app_window.show_all ();
 
             var quit_action = new SimpleAction ("quit", null);
-
+            
             add_action (quit_action);
-            add_accelerator ("<Control>q", "app.quit", null);
+
+            //add_accelerator ("<Control>q", "app.quit", null);
+            set_accels_for_action ("app.quit", {"<Control>q"});
 
             quit_action.activate.connect (() => {
                 if (app_window != null) {

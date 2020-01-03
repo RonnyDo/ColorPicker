@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.com/RonnyDo/Wammer.svg?branch=master)](https://travis-ci.com/RonnyDo/Wammer)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 # Color Picker
 
 One Color Picker to rule them all! No overhelming menus or settings. An easy tool with the features you need.
