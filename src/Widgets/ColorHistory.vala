@@ -180,7 +180,7 @@ namespace ColorPicker.Widgets {
             ctx.rel_line_to (triangle_width / 2, -1 * triangle_height);
             ctx.rel_line_to (triangle_width / 2, triangle_height);
             ctx.close_path ();                                     
-            Gdk.cairo_set_source_rgba (ctx, style_context.get_background_color(Gtk.StateFlags.NORMAL));            
+            Gdk.cairo_set_source_rgba (ctx, style_context.get_color (Gtk.StateFlags.NORMAL));            
             ctx.fill ();   
            
             
