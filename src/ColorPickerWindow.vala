@@ -75,7 +75,7 @@ namespace ColorPicker {
             var format_entry = new Gtk.Entry ();
             format_entry.placeholder_text = ext_active_color.to_css_rgb_string ();
             format_entry.set_editable (false);
-            format_entry.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-copy");     
+            format_entry.set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "edit-copy-symbolic");     
             format_entry.margin_end = 6;
             
             var color_format_combobox = new Gtk.ComboBoxText ();
