@@ -170,8 +170,8 @@ namespace ColorPicker {
                     this.present ();
                 });
 
-                var win = mouse_position.get_window ();
-                
+                //var win = mouse_position.get_window ();
+
                 mouse_position.picked.connect ((t, color) => {
                     ext_active_color = (ExtRGBA) color;
                     color_area.set_color (ext_active_color);
@@ -203,17 +203,16 @@ namespace ColorPicker {
                     Gtk.Clipboard.get_default (this.get_display ()).set_text (format_entry.get_text (), -1);
                 }
             });
-            
-            
+
             //color_format_combobox.changed.connect (color_format_changed);
-            
+
             color_format_combobox.changed.connect (() => {
                 int id = color_format_combobox.get_active ();                
      			update_color_format_combobox_text (format_entry, id);
      			ColorPicker.settings.color_format_index = id;
      		});
-     		
-            
+
+
             // handle changed color in color history
             color_history.color_clicked.connect ((t, color) => {
                 ext_active_color = (ExtRGBA) color;

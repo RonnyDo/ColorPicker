@@ -29,7 +29,7 @@ namespace ColorPicker.Widgets {
         public signal void moved (Gdk.RGBA color);
 
         const string dark_border_color_string = "#333333";
-        private Gdk.RGBA dark_border_color = Gdk.RGBA();            
+        private Gdk.RGBA dark_border_color = Gdk.RGBA();
 
         const string bright_border_color_string = "#FFFFFF";
         private Gdk.RGBA bright_border_color = Gdk.RGBA();
@@ -44,16 +44,17 @@ namespace ColorPicker.Widgets {
         //    and https://github.com/RonnyDo/ColorPicker/issues/19
         int snapsize = 31;
         int min_zoomlevel = 2;
-        int max_zoomlevel = 7;        
+        int max_zoomlevel = 14;
+        //int max_zoomlevel = 7;
         int zoomlevel = 3;
         int shadow_width = 15;
-        
+
         private Gdk.Cursor magnifier = null;
-                
+
         construct {
             type = Gtk.WindowType.POPUP;
         }
-        
+
 
         public Picker () {
             stick ();
@@ -61,12 +62,12 @@ namespace ColorPicker.Widgets {
             set_deletable (false);
             set_skip_taskbar_hint (true);
             set_skip_pager_hint (true);
-            set_keep_above (true);            
-            
-            
-            dark_border_color.parse (dark_border_color_string);            
+            set_keep_above (true);
+
+
+            dark_border_color.parse (dark_border_color_string);
             bright_border_color.parse (bright_border_color_string);
-            
+
             // restore zoomlevel
             if (settings.zoomlevel >= min_zoomlevel && settings.zoomlevel <= max_zoomlevel) {
                 zoomlevel = settings.zoomlevel;
@@ -76,9 +77,9 @@ namespace ColorPicker.Widgets {
             Gdk.Monitor monitor = display.get_primary_monitor ();
             Gdk.Rectangle geom = monitor.get_geometry ();
             set_default_size (geom.width, geom.height);
-        }   
+        }
 
-        
+
         public override bool button_release_event (Gdk.EventButton e) {
             // button_1 is left mouse button
             if (e.button == 1) {
@@ -91,24 +92,24 @@ namespace ColorPicker.Widgets {
 
             return true;            
         }
-        
-       
-       public override bool draw (Cairo.Context cr) {           
+
+
+       public override bool draw (Cairo.Context cr) {
            return false;
        }
 
 
         public override bool motion_notify_event (Gdk.EventMotion e) {  
             Gdk.RGBA color = get_color_at ((int) e.x_root, (int) e.y_root);
-            
+
             moved (color);
-            
+
             set_magnifier_cursor ();
-            
-            return true;            
+
+            return true;
         }
-                
-        
+
+
         public override bool scroll_event (Gdk.EventScroll e)  {
             switch (e.direction) {
                 case Gdk.ScrollDirection.UP:
@@ -134,25 +135,24 @@ namespace ColorPicker.Widgets {
         public void set_magnifier_cursor () {
             var manager = Gdk.Display.get_default ().get_default_seat ();
 
-            // draw cursor
+            // get cursor position
              int px, py;
              get_window ().get_device_position (manager.get_pointer (), out px, out py, null);
 
              var radius = snapsize * zoomlevel / 2;
-             
-             // take screenshot
-             
-             var latest_pb = snap (px - snapsize / 2, py - snapsize / 2, snapsize, snapsize);
-              
+
+             // get a small area (snap) meant to be zoomed
+             var snapped_pixbuf = snap (px - snapsize / 2, py - snapsize / 2, snapsize, snapsize);
+
              // Zoom that screenshot up, and grab a snapsize-sized piece from the middle
-             var scaled_pb = latest_pb.scale_simple (snapsize * zoomlevel + shadow_width * 2 , snapsize * zoomlevel + shadow_width * 2 , Gdk.InterpType.NEAREST);
-             
-             
+             var scaled_pb = snapped_pixbuf.scale_simple (snapsize * zoomlevel + shadow_width * 2 , snapsize * zoomlevel + shadow_width * 2 , Gdk.InterpType.NEAREST);
+
+
              // Create the base surface for our cursor
              var base_surface = new Cairo.ImageSurface (Cairo.Format.ARGB32, snapsize * zoomlevel + shadow_width * 2 , snapsize * zoomlevel + shadow_width * 2);
              var base_context = new Cairo.Context (base_surface);
-             
-             
+
+
              // Create the circular path on our base surface
              base_context.arc (radius + shadow_width, radius + shadow_width, radius, 0, 2 * Math.PI);
  
@@ -162,10 +162,10 @@ namespace ColorPicker.Widgets {
              // Clip to that circular path, keeping the path around for later, and paint the pasted screenshot
              base_context.save ();
              base_context.clip_preserve ();
-             base_context.paint ();   
+             base_context.paint ();
              base_context.restore ();
-            
- 
+
+
              // Draw a shadow as outside magnifier border
              double shadow_alpha = 0.6;       
              base_context.set_line_width (1);
@@ -206,24 +206,13 @@ namespace ColorPicker.Widgets {
             base_context.stroke ();
 
 
-            // turn the base surface into a pixbuf and thence a cursor
-            var drawn_pb = Gdk.pixbuf_get_from_surface(base_surface, 0, 0, base_surface.get_width(), base_surface.get_height());
-            
-            magnifier = new Gdk.Cursor.from_pixbuf(
+            magnifier = new Gdk.Cursor.from_surface(
                 get_screen ().get_display (),                
-                drawn_pb,
-                drawn_pb.get_width () / 2, 
-                drawn_pb.get_height () / 2);
-            
-            /*
-            uint max_cursor_width, max_cursor_height, default_cursor_width, default_cursor_height;;
-            get_screen ().get_display ().get_maximal_cursor_size (out max_cursor_width, out max_cursor_height);
-            print ("\n\nCursor size is " + drawn_pb.get_width().to_string () + "x" + drawn_pb.get_height().to_string ());
-            print ("\nAllowed size is " + max_cursor_width.to_string () + "x" + max_cursor_height.to_string ());    
-            print ("\nDefault size is " + get_screen ().get_display ().get_default_cursor_size ().to_string ());          
-            */
-                
-            // Set the cursor            
+                base_surface,
+                base_surface.get_width () / 2, 
+                base_surface.get_height () / 2);
+
+            // Set the cursor
             manager.grab (
                 get_window (),
                 Gdk.SeatCapabilities.ALL,
@@ -231,6 +220,7 @@ namespace ColorPicker.Widgets {
                 magnifier,
                 new Gdk.Event (Gdk.EventType.BUTTON_PRESS | Gdk.EventType.MOTION_NOTIFY | Gdk.EventType.SCROLL),
                 null);
+
         }     
          
         
