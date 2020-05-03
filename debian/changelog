@@ -1,3 +1,9 @@
+com.github.ronnydo.colorpicker (1.1.4) bionic; urgency=low
+
+  * Added Bulgarian translation (kudos to @clappingmonkey)
+  
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 03 May 2020 00:31:00 +0100
+
 com.github.ronnydo.colorpicker (1.1.3) bionic; urgency=medium
 
   * Added Polish translation (kudos to @michalzkosmosu)

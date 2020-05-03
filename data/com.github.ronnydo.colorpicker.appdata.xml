@@ -22,16 +22,24 @@
 	<category>Development</category>
   </categories>
   <releases>
+  	​<release version="1.1.4" date="2020-05-03" urgency="low">
+  	​  <description>
+  	    <ul>
+  		  <li>Added Bulgarian translation (kudos to @clappingmonkey)</li>
+  		</ul>
+  	  </description>
+  	​</release>
   	​<release version="1.1.3" date="2020-01-02" urgency="medium">
   	​  <description>
   	    <ul>
   		  <li>Added Polish translation (kudos to @michalzkosmosu)</li>
 		  <li>Added Dutch translation (kudos to @Vistaus)</li>
-		  <li>Added Turkish translation (kudos to @ibrakap)</li>
+		  <li>Added Turkish translation (kudos to @onderbakirtas )</li>
 		  <li>Fix build integration (kudos to @meisenzahl)</li>
   		</ul>
   	  </description>
   	​</release>
+
   	​<release version="1.1.2" date="2019-01-02" urgency="medium">
   	​  <description>
   	    <ul>
