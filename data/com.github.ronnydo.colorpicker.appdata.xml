@@ -22,6 +22,13 @@
 	<category>Development</category>
   </categories>
   <releases>
+  	​<release version="1.1.5" date="2020-05-10" urgency="low">
+  	​  <description>
+  	    <ul>
+  		  <li>Fix travis build problem</li>
+  		</ul>
+  	  </description>
+  	​</release>
   	​<release version="1.1.4" date="2020-05-03" urgency="low">
   	​  <description>
   	    <ul>

@@ -1,3 +1,9 @@
+com.github.ronnydo.colorpicker (1.1.5) bionic; urgency=low
+
+  * Fix travis build problem
+  
+ -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 10 May 2020 03:31:00 +0100
+
 com.github.ronnydo.colorpicker (1.1.4) bionic; urgency=low
 
   * Added Bulgarian translation (kudos to @clappingmonkey)
@@ -12,7 +18,6 @@ com.github.ronnydo.colorpicker (1.1.3) bionic; urgency=medium
   * Fix build integration (kudos to @meisenzahl)
   
  -- Ronny Dobra <ronnydobra@arcor.de>  Thu, 02 Jan 2020 20:31:00 +0100
-
 
 com.github.ronnydo.colorpicker (1.1.2) bionic; urgency=medium
 
