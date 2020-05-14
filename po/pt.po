@@ -1,7 +1,7 @@
-# Turkish translations for com.github.ronnydo.colorpicker package.
+# Portuguese translations for com.github.ronnydo.colorpicker package.
 # Copyright (C) 2020 THE com.github.ronnydo.colorpicker'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the com.github.ronnydo.colorpicker package.
-# Önder Bakırtaş <onderbakirtas at gmail dot com>, 2019.
+# Diogo Oliveira <https://github.com/drom98>, 2018.
 #
 msgid ""
 msgstr ""
@@ -9,9 +9,9 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-14 18:18+0200\n"
 "PO-Revision-Date: 2020-05-14 18:12+0200\n"
-"Last-Translator: Önder Bakırtaş <onderbakirtas at gmail dot com>\n"
+"Last-Translator: Diogo Oliveira <https://github.com/drom98>\n"
 "Language-Team: none\n"
-"Language: tr\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,16 +19,16 @@ msgstr ""
 
 #: src/ColorPickerWindow.vala:31
 msgid "Color Picker"
-msgstr "Renk Seçici"
+msgstr "Color Picker"
 
 #: src/ColorPickerWindow.vala:52
 msgid "Pick Color"
-msgstr "Renk Seç"
+msgstr "Selecionar cor"
 
 #: src/ColorPickerWindow.vala:71
 msgid "Format"
-msgstr "Biçim"
+msgstr "Formato"
 
 #: src/ColorPickerWindow.vala:105
 msgid "Color History"
-msgstr "Renk Geçmişi"
+msgstr "Histórico de cores"
