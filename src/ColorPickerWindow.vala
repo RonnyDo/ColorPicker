@@ -179,7 +179,7 @@ namespace ColorPicker {
                                                         
                     int id = color_format_combobox.get_active ();                
                     update_color_format_combobox_text (format_entry, id);
-                    
+                    Gtk.Clipboard.get_default (this.get_display ()).set_text (ext_active_color.to_uppercase_hex_string (), -1);
                     color_history.add_color (ext_active_color);       
                                                
                     var c_list = color_history.get_color_list ();
