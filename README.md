@@ -3,16 +3,17 @@
 
 # Color Picker
 
-One Color Picker to rule them all! No overhelming menus or settings. An easy tool with the features you need.
+One Color Picker to rule them all! No overhelming menus or settings. An easy tool with all the features you need.
 
 Features:
 * Pick a color with the zoomable Magnifier
-* Choose between multiple Color Formats
+* Choose between multiple Color Formats (`hex`, `rgb`, `rgba`)
 * Let the Color History remember your last colors
 
 ![ColorPicker Screenshot](https://raw.github.com/ronnydo/colorpicker/master/data/screenshot.png)
 
 ## Installation
+
 On elementaryOS? Simply install Color Picker from AppCenter:
 <p align="center">
   <a href="https://appcenter.elementary.io/com.github.ronnydo.colorpicker">
@@ -25,9 +26,11 @@ For other Debian-based systems, you can download and install the [latest .deb fi
 For other systems, you will need to compile the package yourself. See the instructions below.
 
 ## Build from source
+
 If you like to build ColorPicker yourself, take a look at the [`dev-build.sh`](dev-build.sh) file.
 
 ### Dependencies
+
 You'll need the following dependencies to compile ColorPicker:
 * granite
 * libgtk-3-dev
@@ -36,7 +39,8 @@ You'll need the following dependencies to compile ColorPicker:
 
 ### Example
 
-Here's a sample list of commands for building the package from source. These have been tested to work correctly on Ubuntu 18.04.
+Here's a sample list of commands for building the package from source.
+These have been tested to work correctly on Ubuntu 18.04.
 
 ```sh
 sudo apt install valac libgranite-dev
