@@ -1,3 +1,5 @@
+#!/user/bin/env bash
+
 sudo rm -r build
 meson build
 cd build
